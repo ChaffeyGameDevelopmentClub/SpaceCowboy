@@ -13,3 +13,15 @@ config_version=5
 config/name="SpaceCowboys"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Art Assets/": "red",
+"res://Enemy/": "blue",
+"res://Levels/": "blue",
+"res://Player/": "blue",
+"res://Sound Assets/": "red",
+"res://Test Stuff/": "gray",
+"res://UI/": "green"
+}
