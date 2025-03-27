@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpr2gc0c5xuij"]
+
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_1akkw"]
+[ext_resource type="Script" uid="uid://dkt3i2pk8ihjs" path="res://Menus/Main/scenes/menus/main_menu/main_menu.gd" id="2_d5xhj"]
+[ext_resource type="PackedScene" uid="uid://egy7k1ooq65n" path="res://Menus/Main/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_1k4v3"]
+[ext_resource type="PackedScene" uid="uid://j0oojcfe0g14" path="res://Menus/Main/scenes/credits/credits.tscn" id="4_ak0ie"]
+
+[node name="MainMenu" instance=ExtResource("1_1akkw")]
+script = ExtResource("2_d5xhj")
+options_packed_scene = ExtResource("3_1k4v3")
+credits_packed_scene = ExtResource("4_ak0ie")
+
+[node name="BackgroundMusicPlayer" parent="." index="1"]
+bus = &"Master"
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+text = "Space Cowboys"
+
+[node name="SubTitleMargin" parent="MenuContainer" index="1"]
+visible = false

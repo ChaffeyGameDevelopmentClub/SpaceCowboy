@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgjqk0lwd5bag"]
+
+[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/loading_screen/loading_screen.tscn" id="1_qrvwa"]
+[ext_resource type="Script" path="res://Menus/Main/scenes/loading_screen/loading_screen_with_shader_caching.gd" id="2_g5x5k"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_klnwy"]
+
+[node name="LoadingScreen" instance=ExtResource("1_qrvwa")]
+script = ExtResource("2_g5x5k")
+_spatial_shader_material_dir = ""
+_cache_shaders_scene = "res://Menus/Main/scenes/game_scene/game_ui.tscn"
+_mesh = SubResource("QuadMesh_klnwy")
+_matching_extensions = Array[String]([".tres", ".material", ".res"])
+_ignore_subfolders = Array[String]([".", ".."])
+_shader_delay_timer = 0.1
+
+[node name="SpatialShaderTypeCaches" type="Node3D" parent="." index="2"]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="SpatialShaderTypeCaches" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.408)
+current = true
