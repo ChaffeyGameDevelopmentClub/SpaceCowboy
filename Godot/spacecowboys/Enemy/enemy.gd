@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-
 const SPEED = 10
-
+var dmg_mult = 10
 var health:int = 5
-
 var player = null
+enum TEAM {PLAYER, ENEMY}
+var team = TEAM.ENEMY
 
 func _physics_process(delta: float) -> void:
 	if player:
@@ -19,6 +19,6 @@ func _physics_process(delta: float) -> void:
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	#We can make this depend on collision layer for performance
 	if area.is_in_group("Bullet"):
-		health-=1
-		if health==0:
+		health -= area.dmg * dmg_mult
+		if health<=0:
 			queue_free()

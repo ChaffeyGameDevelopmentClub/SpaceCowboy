@@ -19,9 +19,10 @@ func _physics_process(delta: float) -> void:
 	
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
-		var shoot_direction = get_global_mouse_position() - global_position
+		var shoot_direction = (get_global_mouse_position() - global_position).normalized()
 		var bullet = BULLET_RESOURCE.instantiate()
 		add_sibling(bullet)
 		bullet.global_position = global_position
-		bullet.SPEED = 5
+		bullet.SPEED = 400
+		bullet.dmg = 1
 		bullet.DIRECTION = shoot_direction

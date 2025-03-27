@@ -3,7 +3,7 @@ extends Area2D
 
 var SPEED:int = 30
 var DIRECTION:Vector2 = Vector2(1,0)
-
+var dmg:int = 10
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	global_position += SPEED * delta * DIRECTION
