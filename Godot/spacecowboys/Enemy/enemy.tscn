@@ -20,7 +20,9 @@ texture = ExtResource("1_2pb1h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4gyqm")
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_qi2p4")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

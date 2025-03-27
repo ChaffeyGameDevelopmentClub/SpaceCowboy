@@ -1,15 +1,17 @@
 extends Area2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
+var SPEED:int = 30
+var DIRECTION:Vector2 = Vector2(1,0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	global_position += SPEED * delta * DIRECTION
 
 
-func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	pass # Replace with function body.
+
+
+func _on_area_entered(area: Area2D) -> void:
+	#We can make this depend on collision layer for performance
+	if area.is_in_group("Enemy"):
+		queue_free()
