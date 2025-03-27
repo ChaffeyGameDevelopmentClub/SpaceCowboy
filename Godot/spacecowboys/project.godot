@@ -12,7 +12,7 @@ config_version=5
 
 config/name="SpaceCowboys"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Art/icon.svg"
 
 [display]
 
@@ -22,11 +22,15 @@ window/stretch/mode="viewport"
 
 folder_colors={
 "res://Art Assets/": "red",
-"res://Enemy/": "blue",
+"res://Assets/": "blue",
 "res://Levels/": "blue",
-"res://Player/": "blue",
+"res://Resources/": "purple",
+"res://Scenes/": "green",
+"res://Scenes/Test Stuff/": "gray",
+"res://Scenes/Test Stuff/Enemy/": "blue",
+"res://Scenes/Test Stuff/Player/": "blue",
+"res://Scripts/": "red",
 "res://Sound Assets/": "red",
-"res://Test Stuff/": "gray",
 "res://UI/": "green"
 }
 
@@ -61,3 +65,7 @@ Shoot={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(197, 24),"global_position":Vector2(206, 72),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
