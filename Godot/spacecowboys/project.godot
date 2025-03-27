@@ -11,12 +11,25 @@ config_version=5
 [application]
 
 config/name="SpaceCowboys"
+run/main_scene="res://Scenes/Menus/scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Assets/Art/icon.svg"
+
+[autoload]
+
+Console="*res://addons/console/console.gd"
+AppConfig="*res://addons/maaacks_menus_template/base/scenes/autoloads/app_config.tscn"
+SceneLoader="*res://addons/maaacks_menus_template/base/scenes/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
 [display]
 
 window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/console/plugin.cfg", "res://addons/health_hitbox_hurtbox/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg", "res://addons/worldmap_builder/plugin.cfg")
 
 [file_customization]
 
@@ -33,6 +46,10 @@ folder_colors={
 "res://Sound Assets/": "red",
 "res://UI/": "green"
 }
+
+[gui]
+
+theme/custom="res://Scenes/Menus/resources/themes/gravity.tres"
 
 [input]
 
@@ -65,6 +82,15 @@ Shoot={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(197, 24),"global_position":Vector2(206, 72),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation")
+
+[maaacks_menus_template]
+
+disable_plugin_dialogues=true
+copy_path="res://Scenes/Menus"
 
 [rendering]
 
