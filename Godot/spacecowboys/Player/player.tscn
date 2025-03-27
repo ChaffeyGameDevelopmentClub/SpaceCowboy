@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2d8p0p06tkvu"]
+[gd_scene load_steps=5 format=3 uid="uid://b2d8p0p06tkvu"]
 
+[ext_resource type="Script" uid="uid://82jffxy38yyy" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://icon.svg" id="1_l8h54"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
@@ -9,15 +10,21 @@ radius = 25.0
 radius = 25.0
 
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4ntmi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_l8h54")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_onrkg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_i3pqv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" type="Node2D" parent="."]
+position = Vector2(0, -9)
