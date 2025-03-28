@@ -39,6 +39,7 @@ folder_colors={
 "res://Levels/": "blue",
 "res://Resources/": "purple",
 "res://Scenes/": "green",
+"res://Scenes/Player/": "yellow",
 "res://Scenes/Test Stuff/": "gray",
 "res://Scenes/Test Stuff/Enemy/": "blue",
 "res://Scenes/Test Stuff/Player/": "blue",

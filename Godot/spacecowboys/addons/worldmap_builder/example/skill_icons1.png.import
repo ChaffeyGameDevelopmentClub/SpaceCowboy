@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cji2hjb30pjt0"
-path="res://.godot/imported/skill_icons1.png-76a598ed6b5b160d1385cde9f0fbaa36.ctex"
+path="res://.godot/imported/skill_icons1.png-56e0b4516351e57810b5544cf2d1da2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://example/skill_icons1.png"
-dest_files=["res://.godot/imported/skill_icons1.png-76a598ed6b5b160d1385cde9f0fbaa36.ctex"]
+source_file="res://addons/worldmap_builder/example/skill_icons1.png"
+dest_files=["res://.godot/imported/skill_icons1.png-56e0b4516351e57810b5544cf2d1da2e.ctex"]
 
 [params]
 

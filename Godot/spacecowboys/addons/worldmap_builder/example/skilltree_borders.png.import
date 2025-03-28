@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dfwrk73ka6j8x"
-path="res://.godot/imported/skilltree_borders.png-b022ab63f57155a8a0a421454feb26f1.ctex"
+path="res://.godot/imported/skilltree_borders.png-08d9a7b10915e63230d0618b27966886.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://example/skilltree_borders.png"
-dest_files=["res://.godot/imported/skilltree_borders.png-b022ab63f57155a8a0a421454feb26f1.ctex"]
+source_file="res://addons/worldmap_builder/example/skilltree_borders.png"
+dest_files=["res://.godot/imported/skilltree_borders.png-08d9a7b10915e63230d0618b27966886.ctex"]
 
 [params]
 
