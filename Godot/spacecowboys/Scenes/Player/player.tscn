@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://bni2qubpevn68"]
+
+[ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
+[ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
+[ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_xpcdj"]
+[ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
+[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/gun_base.gd" id="4_mtuoh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
+radius = 83.1505
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xpcdj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_htcer"]
+radius = 74.1687
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mtuoh"]
+radius = 933.121
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+script = ExtResource("1_htcer")
+gun = NodePath("Revolver/GunBase")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xpcdj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_tugb3")
+
+[node name="Animation" type="Node" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="Animation"]
+tree_root = SubResource("AnimationNodeStateMachine_xpcdj")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
+
+[node name="Hp Player" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Hp Player"]
+script = ExtResource("1_uvnfx")
+current = 3
+max = 3
+metadata/_custom_type_script = "uid://dr8bvnfebp76"
+
+[node name="HurtBox2D" type="Area2D" parent="Hp Player" node_paths=PackedStringArray("health")]
+script = ExtResource("3_mtuoh")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ctuf38y050aep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hp Player/HurtBox2D"]
+shape = SubResource("CircleShape2D_htcer")
+
+[node name="Revolver" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Revolver"]
+
+[node name="GunBase" type="Node2D" parent="Revolver"]
+script = ExtResource("4_mtuoh")
+
+[node name="Spawner" type="Marker2D" parent="Revolver/GunBase"]
+
+[node name="Range" type="Area2D" parent="Revolver/GunBase"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Revolver/GunBase/Range"]
+shape = SubResource("CircleShape2D_mtuoh")
