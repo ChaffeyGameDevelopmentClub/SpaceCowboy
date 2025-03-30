@@ -60,6 +60,11 @@ script = ExtResource("4_mtuoh")
 
 [node name="Spawner" type="Marker2D" parent="Revolver/GunBase"]
 
+[node name="Sprite2D" type="Sprite2D" parent="Revolver/GunBase/Spawner"]
+position = Vector2(214.015, 0)
+scale = Vector2(0.608, 0.608)
+texture = ExtResource("1_xpcdj")
+
 [node name="Range" type="Area2D" parent="Revolver/GunBase"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Revolver/GunBase/Range"]
