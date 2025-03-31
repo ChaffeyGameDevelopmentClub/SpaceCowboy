@@ -23,13 +23,14 @@ script = ExtResource("1_htcer")
 gun = NodePath("Revolver/Aim/GunBase")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.75, 0.75)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xpcdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tugb3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(6, 6)
 
 [node name="Animation" type="Node" parent="."]
 
@@ -81,6 +82,7 @@ shape = SubResource("CircleShape2D_mtuoh")
 [node name="Window" type="Window" parent="."]
 title = "Debug"
 size = Vector2i(285, 100)
+visible = false
 unresizable = true
 always_on_top = true
 
