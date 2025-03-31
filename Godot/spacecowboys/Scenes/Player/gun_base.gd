@@ -15,7 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func shoot():
 	var projectile := BASIC_PROJECTILE.instantiate()
 	get_tree().current_scene.add_child(projectile)
