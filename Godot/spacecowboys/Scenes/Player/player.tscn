@@ -54,6 +54,7 @@ health = NodePath("../Health")
 metadata/_custom_type_script = "uid://ctuf38y050aep"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hp Player/HurtBox2D"]
+visible = false
 shape = SubResource("CircleShape2D_htcer")
 
 [node name="Revolver" type="Node2D" parent="."]
@@ -68,9 +69,9 @@ script = ExtResource("4_mtuoh")
 
 [node name="Spawner" type="Marker2D" parent="Revolver/Aim/GunBase"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Revolver/Aim/GunBase/Spawner"]
-position = Vector2(214.015, 0)
-scale = Vector2(1.238, 0.233)
+[node name="TestSprite" type="Sprite2D" parent="Revolver/Aim/GunBase/Spawner"]
+position = Vector2(45.825, 0)
+scale = Vector2(0.183, 0.064)
 texture = ExtResource("1_xpcdj")
 
 [node name="Range" type="Area2D" parent="Revolver/Aim/GunBase"]
@@ -79,22 +80,55 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Revolver/Aim/GunBase/Range"]
 shape = SubResource("CircleShape2D_mtuoh")
 
-[node name="Window" type="Window" parent="."]
+[node name="Debug Window" type="Window" parent="."]
 title = "Debug"
 size = Vector2i(285, 100)
 visible = false
 unresizable = true
 always_on_top = true
 
-[node name="Angle" type="Label" parent="Window"]
+[node name="Angle" type="Label" parent="Debug Window"]
 unique_name_in_owner = true
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Test"
 
-[node name="MousePos" type="Label" parent="Window"]
+[node name="MousePos" type="Label" parent="Debug Window"]
 unique_name_in_owner = true
 offset_top = 27.0
 offset_right = 40.0
 offset_bottom = 50.0
 text = "Test"
+
+[node name="GameUi" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = -96.0
+offset_top = -54.0
+offset_right = 96.0
+offset_bottom = 54.0
+
+[node name="PanelContainer" type="PanelContainer" parent="GameUi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Health" type="MarginContainer" parent="GameUi/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 85
+theme_override_constants/margin_top = 42
+theme_override_constants/margin_right = 105
+theme_override_constants/margin_bottom = 40
+
+[node name="ColorRect" type="ColorRect" parent="GameUi/PanelContainer/Health"]
+visible = false
+layout_mode = 2
+color = Color(0.798681, 0, 0.223924, 1)
+
+[node name="Label" type="Label" parent="GameUi/PanelContainer/Health"]
+layout_mode = 2
+text = "Health"
