@@ -1,4 +1,5 @@
 class_name BasicProjectile extends Node2D
+## Projectile Template. Not made for full use.
 
 const SPEED: float = 50.0
 
