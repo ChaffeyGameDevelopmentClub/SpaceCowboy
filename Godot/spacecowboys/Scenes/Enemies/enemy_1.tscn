@@ -22,13 +22,16 @@ metadata/_custom_type_script = "uid://hrwhd52e5mkq"
 [sub_resource type="CircleShape2D" id="CircleShape2D_wrykn"]
 radius = 16.0
 
-[node name="Enemy1" type="Node2D"]
+[node name="Enemy1" type="Node2D" node_paths=PackedStringArray("navAgent")]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_fvv5b")
+navAgent = NodePath("NavigationAgent2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_kvx5w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Animation" type="Node" parent="."]
 

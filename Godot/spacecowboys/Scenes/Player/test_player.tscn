@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=9 format=3 uid="uid://due5phr1c3qd6"]
 
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
@@ -32,6 +32,11 @@ animations = [{
 "name": &"default",
 "speed": 0.0
 }]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
+vertices = PackedVector2Array(372.969, -186.227, 421.883, 277.891, -438.93, 270.094, -436.063, -207.719)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-446, -218, 382, -196, 433, 288, -449, 280)])
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -69,3 +74,8 @@ scale = Vector2(0.53, 0.53)
 
 [node name="Enemy1" parent="." instance=ExtResource("3_jgfpa")]
 position = Vector2(113, -41)
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource("NavigationPolygon_jgfpa")
+
+[node name="EnemyManager" type="Node2D" parent="."]
