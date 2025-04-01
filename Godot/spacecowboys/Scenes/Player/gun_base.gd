@@ -24,9 +24,9 @@ func shoot():
 	#mouse movement
 	#$Spawner.rotation_degrees = 
 	var shoot_direction = (get_global_mouse_position() - global_position).normalized()
-	print("Shoot Direction: " + str(shoot_direction))
+	#print("Shoot Direction: " + str(shoot_direction))
 	var angle = atan(shoot_direction.x/shoot_direction.y)
-	print(angle)
+	#print(angle)
 
 
 func _on_range_body_entered(body: Node2D) -> void:

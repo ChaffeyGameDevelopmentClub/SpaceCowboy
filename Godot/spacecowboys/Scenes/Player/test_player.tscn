@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
 
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
+[ext_resource type="PackedScene" uid="uid://cce5ih81d8sld" path="res://Scenes/Enemies/enemy_1.tscn" id="3_jgfpa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
 atlas = ExtResource("2_oc6vg")
@@ -65,3 +66,6 @@ frame_progress = 0.210233
 
 [node name="Player" parent="." instance=ExtResource("1_ruc20")]
 scale = Vector2(0.53, 0.53)
+
+[node name="Enemy1" parent="." instance=ExtResource("3_jgfpa")]
+position = Vector2(113, -41)

@@ -6,6 +6,10 @@ const JUMP_VELOCITY = -400.0
 
 @export var gun:Node
 
+func _ready() -> void:
+	Console.add_command("dmg", dmg_player)
+	Console.add_command("heal", heal_player)
+
 func _physics_process(delta: float) -> void:
 
 	# Handle jump.
@@ -22,3 +26,13 @@ func _physics_process(delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, SPEED)
 
 	move_and_slide()
+
+
+#debug Funcs
+func dmg_player():
+	var hp = $"Hp Player/Health"
+	hp.current -= 1
+
+func heal_player():
+	var hp = $"Hp Player/Health"
+	hp.current += 1
