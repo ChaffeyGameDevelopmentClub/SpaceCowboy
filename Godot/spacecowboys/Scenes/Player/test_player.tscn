@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
+
+[ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
+[ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
+[ext_resource type="PackedScene" uid="uid://cce5ih81d8sld" path="res://Scenes/Enemies/enemy_1.tscn" id="3_jgfpa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
+atlas = ExtResource("2_oc6vg")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aom2n"]
+atlas = ExtResource("2_oc6vg")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rty5c"]
+atlas = ExtResource("2_oc6vg")
+region = Rect2(384, 0, 192, 108)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7g7fb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgfpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aom2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rty5c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="TestPlayer" type="Node2D"]
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+sprite_frames = SubResource("SpriteFrames_7g7fb")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+sprite_frames = SubResource("SpriteFrames_7g7fb")
+frame = 1
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.5, 0.5)
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+sprite_frames = SubResource("SpriteFrames_7g7fb")
+frame = 2
+frame_progress = 0.210233
+
+[node name="Player" parent="." instance=ExtResource("1_ruc20")]
+scale = Vector2(0.53, 0.53)
+
+[node name="Enemy1" parent="." instance=ExtResource("3_jgfpa")]
+position = Vector2(113, -41)
