@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=14 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
@@ -18,6 +18,14 @@ radius = 74.1687
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtuoh"]
 radius = 933.121
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd0ac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
+bg_color = Color(0, 0.517593, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
+bg_color = Color(0, 0.760784, 0, 1)
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
 script = ExtResource("1_htcer")
 gun = NodePath("Revolver/Aim/GunBase")
@@ -30,7 +38,7 @@ texture = ExtResource("1_xpcdj")
 shape = SubResource("CircleShape2D_tugb3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
+zoom = Vector2(4, 4)
 
 [node name="Animation" type="Node" parent="."]
 
@@ -101,34 +109,54 @@ offset_bottom = 50.0
 text = "Test"
 
 [node name="GameUi" type="Control" parent="."]
-visible = false
 layout_mode = 3
-anchors_preset = 0
-offset_left = -96.0
-offset_top = -54.0
-offset_right = 96.0
-offset_bottom = 54.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -81.0
+offset_right = 432.0
+offset_bottom = 243.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 
 [node name="PanelContainer" type="PanelContainer" parent="GameUi"]
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_dd0ac")
 
 [node name="Health" type="MarginContainer" parent="GameUi/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 85
-theme_override_constants/margin_top = 42
-theme_override_constants/margin_right = 105
-theme_override_constants/margin_bottom = 40
-
-[node name="ColorRect" type="ColorRect" parent="GameUi/PanelContainer/Health"]
-visible = false
-layout_mode = 2
-color = Color(0.798681, 0, 0.223924, 1)
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = -95
+theme_override_constants/margin_right = 250
 
 [node name="Label" type="Label" parent="GameUi/PanelContainer/Health"]
+texture_filter = 1
 layout_mode = 2
-text = "Health"
+theme_override_colors/font_color = Color(1.29953e-06, 0.759174, 3.46541e-06, 1)
+theme_override_font_sizes/font_size = 13
+text = "100%"
+horizontal_alignment = 1
+
+[node name="Health2" type="MarginContainer" parent="GameUi/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 260
+theme_override_constants/margin_top = 121
+theme_override_constants/margin_right = 260
+theme_override_constants/margin_bottom = 198
+
+[node name="ProgressBar" type="ProgressBar" parent="GameUi/PanelContainer/Health2"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
+value = 72.28
+show_percentage = false

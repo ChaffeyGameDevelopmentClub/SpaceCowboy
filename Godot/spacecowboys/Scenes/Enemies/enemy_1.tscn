@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cce5ih81d8sld"]
+
+[ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_kvx5w"]
+[ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="2_xglj4"]
+[ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_oyo51"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_fvv5b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6vmfr"]
+radius = 16.0
+
+[node name="Enemy1" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_kvx5w")
+
+[node name="Animation" type="Node" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="Animation"]
+tree_root = SubResource("AnimationNodeStateMachine_fvv5b")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation"]
+
+[node name="Hp Player" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="Hp Player"]
+script = ExtResource("2_xglj4")
+current = 3
+max = 3
+metadata/_custom_type_script = "uid://dr8bvnfebp76"
+
+[node name="HurtBox2D" type="Area2D" parent="Hp Player" node_paths=PackedStringArray("health")]
+script = ExtResource("3_oyo51")
+health = NodePath("../Health")
+metadata/_custom_type_script = "uid://ctuf38y050aep"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hp Player/HurtBox2D"]
+shape = SubResource("CircleShape2D_6vmfr")
