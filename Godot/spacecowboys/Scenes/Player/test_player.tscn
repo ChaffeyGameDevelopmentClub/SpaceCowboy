@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
-[ext_resource type="PackedScene" uid="uid://cce5ih81d8sld" path="res://Scenes/Enemies/enemy_1.tscn" id="3_jgfpa"]
+[ext_resource type="PackedScene" uid="uid://bq3iu5swusugf" path="res://Scenes/Enemies/enemy_manager.tscn" id="3_jgfpa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
 atlas = ExtResource("2_oc6vg")
@@ -75,7 +75,4 @@ scale = Vector2(0.53, 0.53)
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 
-[node name="EnemyManager" type="Node2D" parent="."]
-
-[node name="Enemy1" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
-position = Vector2(116.08, -41)
+[node name="EnemyManager" parent="." instance=ExtResource("3_jgfpa")]

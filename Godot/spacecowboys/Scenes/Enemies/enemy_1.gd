@@ -45,11 +45,7 @@ func _process(delta: float) -> void:
 		_on_velocity_computed(new_velocity)
 	
 	#region debug window
-	print("debug Window\n")
 	var debugWindow = level.get_node("Player/Debug Window")
-	print(level.get_tree_string_pretty())
-	print(level.name)
-	print(debugWindow.name)
 	debugWindow.get_node("PlayerPos").text = "Player Pos: " + str(player.position)
 	debugWindow.get_node("NextPoint").text = "Next Point: " + str(next_path_position)
 	debugWindow.get_node("Velocity").text = "Velocity: " + str(new_velocity)

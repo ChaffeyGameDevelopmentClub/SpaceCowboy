@@ -31,6 +31,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_kvx5w")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
 debug_enabled = true
 
 [node name="Animation" type="Node" parent="."]
