@@ -14,6 +14,7 @@ var rand
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Console.add_command("spawnGroup",consoleSpawn,1,1,"Spawns a group with specified amount")
+	Console.add_command("killAll", killAll)
 	
 	rand = RandomNumberGenerator.new()
 	rand.randomize()
@@ -21,7 +22,7 @@ func _ready() -> void:
 	amount = 5
 
 	spawn_group(amount)
-
+	%SpawnTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -41,22 +42,25 @@ func spawn_group(amount : int):
 		self.add_child(enemy[i])
 		# Positions Enemy Group
 		var pos = player.global_transform
+		Console.print_line(player.global_transform)
 		pos.origin = Vector2(
 			rand.randi_range(-1*rand.randi_range(spawnRadius,protectionRadius),
 			rand.randi_range(spawnRadius,protectionRadius)),
 			rand.randi_range(-1*rand.randi_range(spawnRadius,protectionRadius),
 			rand.randi_range(spawnRadius,protectionRadius)))
 		enemy[i].transform = pos
+		Console.print_line(enemy[i].position)
 	
+func killAll():
+	var children = get_children()
+	for child in children:
+		child.queue_free()
 	
-	
-
-#func shoot():
-	#var projectile := BASIC_PROJECTILE.instantiate()
-	#get_tree().current_scene.add_child(projectile)
-	#projectile.transform = $Spawner.global_transform
-	#
-#
-#func _on_range_body_entered(body: Node2D) -> void:
-	#print("Body Enter")
-	#pass
+func _on_spawn_timer_timeout() -> void:
+	spawn_group(amount)
+	if amount < 30:
+		amount += 5
+	elif amount < 100:
+		amount += 15
+	else:
+		amount += 30

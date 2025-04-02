@@ -1,7 +1,7 @@
 extends CharacterBody2D
 ## Main Player Script. Used to run movement, Debug commands, and run weapon scripts.
 
-const SPEED = 75.0
+const SPEED = 65.0
 
 # Nodes for Guns
 @export_group("Nodes")

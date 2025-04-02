@@ -34,9 +34,9 @@ animations = [{
 }]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
-vertices = PackedVector2Array(1230.93, -169.094, 1226.06, 615, -1152.41, 615, -1105.57, -190.906)
+vertices = PackedVector2Array(1226.24, 615, -1152.87, 615, -1135.12, -762.063, 1260.74, -778.922)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-1115, -201, 1241, -179, 1236, 625, -1163, 625)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1145, -772, 1271, -789, 1236, 625, -1163, 625)])
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -72,7 +72,8 @@ frame_progress = 0.210233
 [node name="Player" parent="." instance=ExtResource("1_ruc20")]
 scale = Vector2(0.53, 0.53)
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Player"]
+scale = Vector2(1.88679, 1.88679)
 navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 
 [node name="EnemyManager" parent="." instance=ExtResource("3_jgfpa")]
