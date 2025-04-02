@@ -1,7 +1,7 @@
 extends Node2D
 ## Enemy Script
 
-const SPEED := 25.0
+const SPEED := 50.0
 
 @export_group("Nodes")
 

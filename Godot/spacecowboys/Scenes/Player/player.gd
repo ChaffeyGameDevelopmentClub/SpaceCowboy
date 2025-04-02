@@ -9,6 +9,7 @@ const SPEED = 75.0
 @onready var hp = $"Hp Player/Health"
 
 func _ready() -> void:
+	Console.pause_enabled = true
 	Console.add_command("dmg", dmg_player)
 	Console.add_command("heal", heal_player)
 
