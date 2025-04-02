@@ -14,25 +14,25 @@ extends CharacterBody2D
 # These values refer to the exclusive path upgrades
 # 0 is base, 1 and 2 refer to their upgrade trees
 @export_group("Upgrades")
-@export var RevolverUpgrade:int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
-@export var ShotgunUpgrade:int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
-@export var TommyUpgrade:int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
+@export var RevolverUpgrade: int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
+@export var ShotgunUpgrade: int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
+@export var TommyUpgrade: int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
 
 @export_group("Fire Rate")
-@export var RevolverFireRate:float = 0.33 ## Time in seconds between shots
-@export var ShotgunFireRate:float = 0.8 ## Time in seconds between shots
-@export var TommyGunFireRate:float = 0.2 ## Time in seconds between shots
+@export var RevolverFireRate: float = 0.33 ## Time in seconds between shots
+@export var ShotgunFireRate: float = 0.8 ## Time in seconds between shots
+@export var TommyGunFireRate: float = 0.2 ## Time in seconds between shots
 
 ## Nodes for Script
 @export_group("Nodes")
 @export_subgroup("Gun Nodes") # Gun Nodes
-@export var Revolver:Node
-@export var Shotgun:Node
-@export var TommyGun:Node
-@export_subgroup("Fire Rate Timers")# Deals with Firerate
-@export var RevolverTimer:Timer 
-@export var ShotgunTimer:Timer
-@export var TommyGunTimer:Timer
+@export var Revolver: Node
+@export var Shotgun: Node
+@export var TommyGun: Node
+@export_subgroup("Fire Rate Timers") # Deals with Firerate
+@export var RevolverTimer: Timer
+@export var ShotgunTimer: Timer
+@export var TommyGunTimer: Timer
 
 @onready var hp = $"Hp Player/Health"
 
@@ -52,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		if ShotgunUpgrade >= 3:
 			ShotgunUpgrade = 0
 	# Run directional Inputs.
-	var direction := Input.get_vector("Move Left", "Move Right","Move Up","Move Down")
+	var direction := Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 	if direction:
 		velocity = direction * speed
 	else:

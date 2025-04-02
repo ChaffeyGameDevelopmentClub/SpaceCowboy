@@ -6,14 +6,14 @@ extends Node2D
 const SPEED := 50.0
 
 # From Docs
-var movement_delta : float
+var movement_delta: float
 
 var manager
 var level
 var player
 
 # From Docs
-@onready var navAgent : NavigationAgent2D = get_node("NavigationAgent2D")
+@onready var navAgent: NavigationAgent2D = get_node("NavigationAgent2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,7 +55,6 @@ func set_movement_target(movement_target: Vector2):
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
-
 
 
 #func nextPoint():

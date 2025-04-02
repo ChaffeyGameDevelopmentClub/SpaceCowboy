@@ -15,7 +15,7 @@ var rand
 
 func _ready() -> void:
 	# Add Console Commands
-	Console.add_command("spawnGroup",consoleSpawn,1,1,"Spawns a group with specified amount")
+	Console.add_command("spawnGroup", consoleSpawn, 1, 1, "Spawns a group with specified amount")
 	Console.add_command("killAll", killAll)
 	
 	rand = RandomNumberGenerator.new()
@@ -31,15 +31,15 @@ func _process(delta: float) -> void:
 	pass
 
 ## Used to pass a string to a int for Console commands
-func consoleSpawn(amount : String):
+func consoleSpawn(amount: String):
 	spawn_group(int(amount))
 
 ## Spawns a group based on [param amount]
-func spawn_group(amount : int):
+func spawn_group(amount: int):
 	rand.randomize()
 	# Instantiate new Enemy Group
 	Console.print_line("%s Spawned" % amount)
-	var enemy : Array[Node] = []
+	var enemy: Array[Node] = []
 	for i in amount:
 		enemy.push_back(ENEMY1.instantiate())
 		# Adds to scene
@@ -48,10 +48,10 @@ func spawn_group(amount : int):
 		var pos = player.global_transform
 		Console.print_line(player.global_transform)
 		pos.origin = Vector2(
-			rand.randi_range(-1*rand.randi_range(spawnRadius,protectionRadius),
-			rand.randi_range(spawnRadius,protectionRadius)),
-			rand.randi_range(-1*rand.randi_range(spawnRadius,protectionRadius),
-			rand.randi_range(spawnRadius,protectionRadius)))
+			rand.randi_range(-1 * rand.randi_range(spawnRadius, protectionRadius),
+			rand.randi_range(spawnRadius, protectionRadius)),
+			rand.randi_range(-1 * rand.randi_range(spawnRadius, protectionRadius),
+			rand.randi_range(spawnRadius, protectionRadius)))
 		enemy[i].transform = pos
 		Console.print_line(enemy[i].position)
 
