@@ -1,18 +1,20 @@
 extends Node2D
 ## Spawns new Enemies
 
+# Load Enemy scenes
 const ENEMY1 = preload("res://Scenes/Enemies/enemy_1.tscn")
 
-@export var spawnRadius = 500
-@export var protectionRadius = 150
+@export var spawnRadius = 500 ## The max radius they will spawn from the player
+@export var protectionRadius = 150 ## The radius from the player they can't spawn in
 
+## Amount of Enemies to be spawned
 var amount
 var rand
 
 @onready var player = get_parent().get_node("Player")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Add Console Commands
 	Console.add_command("spawnGroup",consoleSpawn,1,1,"Spawns a group with specified amount")
 	Console.add_command("killAll", killAll)
 	
@@ -28,9 +30,11 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+## Used to pass a string to a int for Console commands
 func consoleSpawn(amount : String):
 	spawn_group(int(amount))
 
+## Spawns a group based on [param amount]
 func spawn_group(amount : int):
 	rand.randomize()
 	# Instantiate new Enemy Group
@@ -50,7 +54,8 @@ func spawn_group(amount : int):
 			rand.randi_range(spawnRadius,protectionRadius)))
 		enemy[i].transform = pos
 		Console.print_line(enemy[i].position)
-	
+
+## Kills all spawned enemies
 func killAll():
 	var children = get_children()
 	for child in children:
