@@ -17,5 +17,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_action_applied(_hurt_box: HurtBox2D) -> void:
 	hit_box.ignore_collisions = true
-	# Handles piercing 
 	queue_free()
