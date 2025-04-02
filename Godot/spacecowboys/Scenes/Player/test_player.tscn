@@ -34,9 +34,9 @@ animations = [{
 }]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
-vertices = PackedVector2Array(372.969, -186.227, 421.883, 277.891, -438.93, 270.094, -436.063, -207.719)
+vertices = PackedVector2Array(1230.93, -169.094, 1226.06, 615, -1152.41, 615, -1105.57, -190.906)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-446, -218, 382, -196, 433, 288, -449, 280)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1115, -201, 1241, -179, 1236, 625, -1163, 625)])
 
 [node name="TestPlayer" type="Node2D"]
 
@@ -78,4 +78,4 @@ navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 [node name="EnemyManager" type="Node2D" parent="."]
 
 [node name="Enemy1" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
-position = Vector2(113, -41)
+position = Vector2(116.08, -41)
