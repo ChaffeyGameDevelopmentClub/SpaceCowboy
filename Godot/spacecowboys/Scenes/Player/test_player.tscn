@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=9 format=3 uid="uid://due5phr1c3qd6"]
 
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
-[ext_resource type="PackedScene" uid="uid://cce5ih81d8sld" path="res://Scenes/Enemies/enemy_1.tscn" id="3_jgfpa"]
+[ext_resource type="PackedScene" uid="uid://bq3iu5swusugf" path="res://Scenes/Enemies/enemy_manager.tscn" id="3_jgfpa"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
 atlas = ExtResource("2_oc6vg")
@@ -33,6 +33,11 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
+vertices = PackedVector2Array(1226.24, 615, -1152.87, 615, -1135.12, -762.063, 1260.74, -778.922)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1145, -772, 1271, -789, 1236, 625, -1163, 625)])
+
 [node name="TestPlayer" type="Node2D"]
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
@@ -55,7 +60,7 @@ sprite_frames = SubResource("SpriteFrames_7g7fb")
 frame = 1
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
-scroll_scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.4, 0.4)
 repeat_size = Vector2(192, 108)
 repeat_times = 8
 
@@ -67,5 +72,8 @@ frame_progress = 0.210233
 [node name="Player" parent="." instance=ExtResource("1_ruc20")]
 scale = Vector2(0.53, 0.53)
 
-[node name="Enemy1" parent="." instance=ExtResource("3_jgfpa")]
-position = Vector2(113, -41)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Player"]
+scale = Vector2(1.88679, 1.88679)
+navigation_polygon = SubResource("NavigationPolygon_jgfpa")
+
+[node name="EnemyManager" parent="." instance=ExtResource("3_jgfpa")]
