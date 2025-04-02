@@ -60,7 +60,7 @@ sprite_frames = SubResource("SpriteFrames_7g7fb")
 frame = 1
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
-scroll_scale = Vector2(0.5, 0.5)
+scroll_scale = Vector2(0.4, 0.4)
 repeat_size = Vector2(192, 108)
 repeat_times = 8
 
@@ -72,10 +72,10 @@ frame_progress = 0.210233
 [node name="Player" parent="." instance=ExtResource("1_ruc20")]
 scale = Vector2(0.53, 0.53)
 
-[node name="Enemy1" parent="." instance=ExtResource("3_jgfpa")]
-position = Vector2(113, -41)
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 
 [node name="EnemyManager" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
+position = Vector2(113, -41)
