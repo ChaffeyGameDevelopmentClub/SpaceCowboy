@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=16 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/revolver.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/shotgun.gd" id="7_jlvik"]
-[ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
 radius = 14.3178
@@ -21,9 +20,6 @@ radius = 15.0333
 [sub_resource type="CircleShape2D" id="CircleShape2D_mtuoh"]
 radius = 933.121
 
-[sub_resource type="Theme" id="Theme_0u5uq"]
-default_font_size = 15
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd0ac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
@@ -32,14 +28,10 @@ bg_color = Color(0, 0.517593, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
 bg_color = Color(0, 0.760784, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Revolver", "Shotgun", "TommyGun", "RevolverTimer", "ShotgunTimer", "TommyGunTimer")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Revolver", "Shotgun")]
 script = ExtResource("1_htcer")
 Revolver = NodePath("Gun Belt/Aim/Revolver")
 Shotgun = NodePath("Gun Belt/Aim/Shotgun")
-TommyGun = NodePath("Gun Belt/Aim/TommyGun")
-RevolverTimer = NodePath("RevolverCooldown")
-ShotgunTimer = NodePath("ShotgunCooldown")
-TommyGunTimer = NodePath("TommyGunCooldown")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -117,64 +109,25 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Gun Belt/Aim/Shotgun/Range"]
 shape = SubResource("CircleShape2D_mtuoh")
 
-[node name="TommyGun" type="Node2D" parent="Gun Belt/Aim"]
-script = ExtResource("8_gk6dx")
-
-[node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/TommyGun"]
-
-[node name="TestSprite" type="Sprite2D" parent="Gun Belt/Aim/TommyGun/Spawner"]
-position = Vector2(45.825, 0)
-scale = Vector2(0.183, 0.064)
-texture = ExtResource("1_xpcdj")
-
-[node name="Range" type="Area2D" parent="Gun Belt/Aim/TommyGun"]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun Belt/Aim/TommyGun/Range"]
-shape = SubResource("CircleShape2D_mtuoh")
-
 [node name="Debug Window" type="Window" parent="."]
 title = "Debug"
-position = Vector2i(15, 40)
-size = Vector2i(255, 100)
+size = Vector2i(285, 100)
 visible = false
+unresizable = true
 always_on_top = true
-theme = SubResource("Theme_0u5uq")
 
 [node name="Angle" type="Label" parent="Debug Window"]
 unique_name_in_owner = true
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Test"
 
 [node name="MousePos" type="Label" parent="Debug Window"]
 unique_name_in_owner = true
-visible = false
 offset_top = 27.0
 offset_right = 40.0
 offset_bottom = 50.0
 text = "Test"
-
-[node name="PlayerPos" type="Label" parent="Debug Window"]
-unique_name_in_owner = true
-offset_right = 40.0
-offset_bottom = 17.0
-text = "Player Pos: "
-
-[node name="NextPoint" type="Label" parent="Debug Window"]
-unique_name_in_owner = true
-offset_top = 16.605
-offset_right = 81.0
-offset_bottom = 38.605
-text = "Next Point:"
-
-[node name="Velocity" type="Label" parent="Debug Window"]
-unique_name_in_owner = true
-offset_top = 33.83
-offset_right = 61.0
-offset_bottom = 55.83
-text = "Velocity:"
 
 [node name="GameUi" type="Control" parent="." node_paths=PackedStringArray("health")]
 layout_mode = 3
@@ -230,16 +183,3 @@ theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 value = 72.28
 show_percentage = false
-
-[node name="RevolverCooldown" type="Timer" parent="."]
-wait_time = 0.33
-
-[node name="ShotgunCooldown" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="TommyGunCooldown" type="Timer" parent="."]
-wait_time = 0.2
-
-[connection signal="timeout" from="RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
-[connection signal="timeout" from="ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
-[connection signal="timeout" from="TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]
