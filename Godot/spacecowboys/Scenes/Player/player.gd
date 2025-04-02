@@ -1,8 +1,7 @@
 extends CharacterBody2D
 ## Main Player Script. Used to run movement, Debug commands, and run weapon scripts.
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 75.0
 
 @export_group("Nodes")
 @export var Revolver:Node

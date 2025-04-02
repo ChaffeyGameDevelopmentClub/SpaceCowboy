@@ -30,6 +30,9 @@ script = ExtResource("1_fvv5b")
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_kvx5w")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
 [node name="Animation" type="Node" parent="."]
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
