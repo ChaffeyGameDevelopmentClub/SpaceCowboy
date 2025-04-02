@@ -68,4 +68,6 @@ metadata/_custom_type_script = "uid://b1vnxk5bfh6el"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
 shape = SubResource("CircleShape2D_wrykn")
 
+[node name="state_machine_enemy" type="Node" parent="."]
+
 [connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]

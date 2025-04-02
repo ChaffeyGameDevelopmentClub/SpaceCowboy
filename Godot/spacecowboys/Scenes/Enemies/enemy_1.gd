@@ -1,9 +1,9 @@
 extends Node2D
-## Enemy Script
+## Enemy 1 Script
+## Basic Enemy that just slowly moves towards the player.
+## Reference from [url]https://docs.godotengine.org/en/4.4/tutorials/navigation/navigation_using_navigationagents.html[/url]
 
 const SPEED := 50.0
-
-@export_group("Nodes")
 
 # From Docs
 var movement_delta : float
