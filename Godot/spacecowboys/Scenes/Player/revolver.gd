@@ -17,6 +17,7 @@ func shoot(speed: float):
 	get_tree().current_scene.add_child(projectile)
 	projectile.SPEED = speed
 	projectile.transform = $Spawner.global_transform
+	projectile.PunchThrough = 1
 
 func _on_range_body_entered(body: Node2D) -> void:
 	print("Body Enter")

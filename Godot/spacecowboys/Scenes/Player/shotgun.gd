@@ -15,12 +15,12 @@ func _process(delta: float) -> void:
 	pass
 
 func shoot(speed: float, count: int):
-	var shoot_direction = (get_global_mouse_position() - global_position).normalized()
-	var projectile := BASIC_PROJECTILE.instantiate()
 	for i in count:
+		var projectile := BASIC_PROJECTILE.instantiate()
 		get_tree().current_scene.add_child(projectile)
 		projectile.SPEED = speed
 		projectile.transform = $Spawner.global_transform
+		projectile.rotate(deg_to_rad(randf_range(-25.0,25)))
 
 func _on_range_body_entered(body: Node2D) -> void:
 	print("Body Enter")

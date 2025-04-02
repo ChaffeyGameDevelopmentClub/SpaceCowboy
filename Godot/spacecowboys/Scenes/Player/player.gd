@@ -18,7 +18,7 @@ func _physics_process(delta: float) -> void:
 	# On click Shoot. Will be replaced when Auto aim is made.
 	if Input.is_action_just_pressed("Shoot"):
 		Revolver.shoot(80.0)
-		Shotgun.shoot(60.0, 3)
+		Shotgun.shoot(80.0, 3)
 	# Run directional Inputs.
 	var direction := Input.get_vector("Move Left", "Move Right","Move Up","Move Down")
 	if direction:

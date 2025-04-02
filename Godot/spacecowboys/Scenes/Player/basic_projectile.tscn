@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxqalvcdde8oe"]
+[gd_scene load_steps=6 format=3 uid="uid://cxqalvcdde8oe"]
 
 [ext_resource type="Script" uid="uid://s20aookoi877" path="res://Scenes/Player/basic_projectile.gd" id="1_4kpn1"]
 [ext_resource type="Script" uid="uid://b1vnxk5bfh6el" path="res://addons/health_hitbox_hurtbox/2d/hit_box_2d/hit_box_2d.gd" id="1_eq66d"]
-[ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_hq6d5"]
 [ext_resource type="Script" uid="uid://hrwhd52e5mkq" path="res://addons/health_hitbox_hurtbox/resources/action.gd" id="4_k1fpk"]
 
 [sub_resource type="Resource" id="Resource_qm8p5"]
@@ -15,12 +14,14 @@ metadata/_custom_type_script = "uid://hrwhd52e5mkq"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hq6d5"]
 size = Vector2(7, 7)
 
-[node name="BasicProjectile" type="Node2D"]
+[node name="BasicProjectile" type="Node2D" node_paths=PackedStringArray("hit_box", "Sprite")]
 script = ExtResource("1_4kpn1")
+hit_box = NodePath("HitBox2D")
+Sprite = NodePath("Sprite2D")
+SpriteTexture = "res://Assets/Art/icon.svg"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_hq6d5")
 
 [node name="HitBox2D" type="Area2D" parent="."]
 collision_layer = 2
