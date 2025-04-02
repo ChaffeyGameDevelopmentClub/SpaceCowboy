@@ -78,4 +78,10 @@ navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 [node name="EnemyManager" type="Node2D" parent="."]
 
 [node name="Enemy1" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
-position = Vector2(116.08, -41)
+position = Vector2(87, 0)
+
+[node name="Enemy2" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
+position = Vector2(202, -2)
+
+[node name="Enemy3" parent="EnemyManager" instance=ExtResource("3_jgfpa")]
+position = Vector2(144, -1)

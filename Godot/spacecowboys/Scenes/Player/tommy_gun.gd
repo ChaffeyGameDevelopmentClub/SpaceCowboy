@@ -7,6 +7,7 @@ func shoot(speed: float):
 	get_tree().current_scene.add_child(projectile)
 	projectile.SPEED = speed
 	projectile.transform = $Spawner.global_transform
+	projectile.rotate(deg_to_rad(randf_range(-10.0,10)))
 	projectile.ExpireTimer.start()
 
 func _on_range_body_entered(body: Node2D) -> void:
