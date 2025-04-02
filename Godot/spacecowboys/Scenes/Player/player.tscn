@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=16 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_xpcdj"]
 [ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
-[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/gun_base.gd" id="4_mtuoh"]
 [ext_resource type="Script" uid="uid://cgtuofjkjxsch" path="res://Scenes/Player/aim.gd" id="5_dd0ac"]
+[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/revolver.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
+[ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/shotgun.gd" id="7_jlvik"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
 radius = 14.3178
@@ -27,9 +28,10 @@ bg_color = Color(0, 0.517593, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
 bg_color = Color(0, 0.760784, 0, 1)
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gun")]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Revolver", "Shotgun")]
 script = ExtResource("1_htcer")
-gun = NodePath("Revolver/Aim/GunBase")
+Revolver = NodePath("Gun Belt/Aim/Revolver")
+Shotgun = NodePath("Gun Belt/Aim/Shotgun")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
@@ -68,27 +70,43 @@ metadata/_custom_type_script = "uid://ctuf38y050aep"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hp Player/HurtBox2D"]
 shape = SubResource("CircleShape2D_htcer")
 
-[node name="Revolver" type="Node2D" parent="."]
+[node name="Gun Belt" type="Node2D" parent="."]
 
-[node name="Sprite2D" type="Sprite2D" parent="Revolver"]
+[node name="Sprite2D" type="Sprite2D" parent="Gun Belt"]
 
-[node name="Aim" type="Node2D" parent="Revolver"]
+[node name="Aim" type="Node2D" parent="Gun Belt"]
 script = ExtResource("5_dd0ac")
 
-[node name="GunBase" type="Node2D" parent="Revolver/Aim"]
-script = ExtResource("4_mtuoh")
+[node name="Revolver" type="Node2D" parent="Gun Belt/Aim"]
+script = ExtResource("6_0u5uq")
 
-[node name="Spawner" type="Marker2D" parent="Revolver/Aim/GunBase"]
+[node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/Revolver"]
 
-[node name="TestSprite" type="Sprite2D" parent="Revolver/Aim/GunBase/Spawner"]
+[node name="TestSprite" type="Sprite2D" parent="Gun Belt/Aim/Revolver/Spawner"]
 position = Vector2(45.825, 0)
 scale = Vector2(0.183, 0.064)
 texture = ExtResource("1_xpcdj")
 
-[node name="Range" type="Area2D" parent="Revolver/Aim/GunBase"]
+[node name="Range" type="Area2D" parent="Gun Belt/Aim/Revolver"]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Revolver/Aim/GunBase/Range"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun Belt/Aim/Revolver/Range"]
+shape = SubResource("CircleShape2D_mtuoh")
+
+[node name="Shotgun" type="Node2D" parent="Gun Belt/Aim"]
+script = ExtResource("7_jlvik")
+
+[node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/Shotgun"]
+
+[node name="TestSprite" type="Sprite2D" parent="Gun Belt/Aim/Shotgun/Spawner"]
+position = Vector2(45.825, 0)
+scale = Vector2(0.183, 0.064)
+texture = ExtResource("1_xpcdj")
+
+[node name="Range" type="Area2D" parent="Gun Belt/Aim/Shotgun"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Gun Belt/Aim/Shotgun/Range"]
 shape = SubResource("CircleShape2D_mtuoh")
 
 [node name="Debug Window" type="Window" parent="."]

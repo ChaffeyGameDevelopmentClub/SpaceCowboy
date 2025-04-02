@@ -1,7 +1,8 @@
 class_name BasicProjectile extends Node2D
 ## Projectile Template. Not made for full use.
 
-const SPEED: float = 50.0
+# Default value
+@export var SPEED: float = 50.0
 
 @onready var hit_box: HitBox2D = $HitBox2D
 

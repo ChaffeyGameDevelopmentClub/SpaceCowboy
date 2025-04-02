@@ -5,7 +5,8 @@ const SPEED = 150.0
 const JUMP_VELOCITY = -400.0
 
 @export_group("Nodes")
-@export var gun:Node
+@export var Revolver:Node
+@export var Shotgun:Node
 
 @onready var hp = $"Hp Player/Health"
 
@@ -16,7 +17,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# On click Shoot. Will be replaced when Auto aim is made.
 	if Input.is_action_just_pressed("Shoot"):
-		gun.shoot()
+		Revolver.shoot(80.0)
+		Shotgun.shoot(60.0, 3)
 	# Run directional Inputs.
 	var direction := Input.get_vector("Move Left", "Move Right","Move Up","Move Down")
 	if direction:
