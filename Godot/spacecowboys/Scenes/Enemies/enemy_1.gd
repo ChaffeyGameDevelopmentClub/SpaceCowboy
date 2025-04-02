@@ -15,17 +15,19 @@ var player
 # From Docs
 @onready var navAgent: NavigationAgent2D = get_node("NavigationAgent2D")
 
-# Called when the node enters the scene tree for the first time.
+#region ready
 func _ready() -> void:
 	manager = get_parent()
 	level = manager.get_parent()
 	player = level.get_node("Player")
-	
 	# From Docs
 	navAgent.velocity_computed.connect(Callable(_on_velocity_computed))
+#endregion
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+
+#region process
 func _process(delta: float) -> void:
+	# set tartget Pos
 	set_movement_target(player.position)
 	
 	# Do not query when the map has never synchronized and is empty.
@@ -44,22 +46,22 @@ func _process(delta: float) -> void:
 	else:
 		_on_velocity_computed(new_velocity)
 	
-	#region debug window
-	var debugWindow = level.get_node("Player/Debug Window")
-	debugWindow.get_node("PlayerPos").text = "Player Pos: " + str(player.position)
-	debugWindow.get_node("NextPoint").text = "Next Point: " + str(next_path_position)
-	debugWindow.get_node("Velocity").text = "Velocity: " + str(new_velocity)
-	#endregion
+	##region debug window
+	#var debugWindow = level.get_node("Player/Debug Window")
+	#debugWindow.get_node("PlayerPos").text = "Player Pos: " + str(player.position)
+	#debugWindow.get_node("NextPoint").text = "Next Point: " + str(next_path_position)
+	#debugWindow.get_node("Velocity").text = "Velocity: " + str(new_velocity)
+	##endregion
+	
+#endregion
+
 func set_movement_target(movement_target: Vector2):
 	navAgent.set_target_position(movement_target)
 
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
-
-#func nextPoint():
-	#var np = navAgent.get_next_path_position()
-	#self.position += lerp(self.position,np,SPEED)
-
 func _on_health_died(entity: Node) -> void:
+	# might make a explosion?
+	# need to add to var to give player xp
 	queue_free()
