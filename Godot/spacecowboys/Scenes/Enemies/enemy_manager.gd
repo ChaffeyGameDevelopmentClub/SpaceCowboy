@@ -52,14 +52,14 @@ func spawn_group(amount: int):
 		self.add_child(enemy[i])
 		# Positions Enemy Group
 		var pos = player.global_transform
-		Console.print_line(player.global_transform)
+		#Console.print_line(player.global_transform)
 		pos.origin = Vector2(
 			rand.randi_range(-1 * rand.randi_range(spawnRadius, protectionRadius),
 			rand.randi_range(spawnRadius, protectionRadius)),
 			rand.randi_range(-1 * rand.randi_range(spawnRadius, protectionRadius),
 			rand.randi_range(spawnRadius, protectionRadius)))
 		enemy[i].transform = pos
-		Console.print_line(enemy[i].position)
+		#Console.print_line(enemy[i].position)
 
 ## Kills all spawned enemies
 func killAll():

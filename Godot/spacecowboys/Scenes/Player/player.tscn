@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=20 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/shotgun.gd" id="7_jlvik"]
 [ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
+[ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
 radius = 14.3178
@@ -190,6 +192,10 @@ grow_vertical = 2
 scale = Vector2(0.25, 0.25)
 script = ExtResource("7_0u5uq")
 health = NodePath("../Hp Player/Health")
+
+[node name="PauseMenuController" type="Node" parent="GameUi"]
+script = ExtResource("10_jhyir")
+pause_menu_packed = ExtResource("11_74mp2")
 
 [node name="PanelContainer" type="PanelContainer" parent="GameUi"]
 texture_filter = 1

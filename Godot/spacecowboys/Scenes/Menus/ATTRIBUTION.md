@@ -1,11 +1,13 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Person w/ Link]()  
+### Programming
+[Luna](https://github.com/Bro-dep)
+Kevin 
 
+### Art
+Jacob 
+Linus
 
 ## Sourced / Unaffiliated
 ### Asset Type
@@ -34,3 +36,13 @@ License: [GNU General Public License version 2](https://opensource.org/licenses/
 Author: [Marek Belski](https://github.com/Maaack/Godot-Menus-Template/graphs/contributors)  
 Source: [github: Godot-Menus-Template](https://github.com/Maaack/Godot-Menus-Template)  
 License: [MIT License](LICENSE.txt)  
+
+#### Godot health-hitbox-hurtbox
+Author: [Cluttered-code](https://github.com/cluttered-code)
+Source: [Github](https://github.com/cluttered-code/godot-health-hitbox-hurtbox/tree/main)
+License: [MIT License](LICENSE.txt)
+
+#### Godot Console
+Author: [jitspoe](https://github.com/jitspoe)
+Source: [Github](https://github.com/jitspoe/godot-console?tab=readme-ov-file)
+License: [MIT License](ConsoleLicense.txt)

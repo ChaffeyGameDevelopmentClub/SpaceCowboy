@@ -84,7 +84,7 @@ charge_state = NodePath("../Charge")
 
 [node name="Charge" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("9_pfv8h")
-ChargeSpeed = 125.0
+ChargeSpeed = 150.0
 move_state = NodePath("../Move")
 
 [node name="ChargeTime" type="Timer" parent="StateMachine/Charge"]
@@ -92,7 +92,7 @@ wait_time = 1.5
 one_shot = true
 
 [node name="TargetTime" type="Timer" parent="StateMachine/Charge"]
-wait_time = 0.5
+wait_time = 0.8
 one_shot = true
 
 [connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]

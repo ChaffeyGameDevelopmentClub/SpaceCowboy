@@ -44,6 +44,7 @@ func _on_charge_time_timeout() -> void:
 		parent.navAgent.set_velocity(new_velocity)
 	else:
 		parent._on_velocity_computed(new_velocity)
+	TargetTime.start()
 
 func _on_target_time_timeout() -> void:
 	chargeDone = true
