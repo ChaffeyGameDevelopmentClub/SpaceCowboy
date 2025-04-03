@@ -40,6 +40,15 @@ func set_movement_target(movement_target: Vector2):
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
+func diedScript():
+	# might make a explosion?
+	var died = DIEDANI.instantiate()
+	get_tree().current_scene.add_child(died)
+	died.transform = self.global_transform
+	# need to add to var to give player xp
+	Global.xp += 10
+	queue_free()
+
 func _on_health_died(_entity: Node) -> void:
 	# might make a explosion?
 	var died = DIEDANI.instantiate()

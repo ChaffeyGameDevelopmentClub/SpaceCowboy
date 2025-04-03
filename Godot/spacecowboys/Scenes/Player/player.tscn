@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=47 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
 [ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
+[ext_resource type="VideoStream" uid="uid://do0pyjamc4dc8" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
 atlas = ExtResource("3_oikmp")
@@ -105,6 +106,9 @@ region = Rect2(4032, 0, 192, 192)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_06tpx")
 }, {
 "duration": 1.0,
@@ -170,9 +174,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2jnj1")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
@@ -225,6 +229,7 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xpcdj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_enij7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -452,6 +457,42 @@ theme_type_variation = &"GraphNodeTitleLabel"
 theme_override_font_sizes/font_size = 30
 text = "Lvl:"
 
+[node name="DeadScreen" type="PanelContainer" parent="GameUi"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUi/DeadScreen"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/DeadScreen/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_right = 350
+
+[node name="TextureRect" type="VideoStreamPlayer" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+stream = ExtResource("13_06tpx")
+autoplay = true
+loop = true
+
+[node name="Label" type="Label" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "You Died."
+horizontal_alignment = 1
+
+[node name="DeadBomb" type="Timer" parent="GameUi/DeadScreen"]
+one_shot = true
+
 [node name="RevolverCooldown" type="Timer" parent="."]
 wait_time = 0.33
 
@@ -461,7 +502,9 @@ wait_time = 0.5
 [node name="TommyGunCooldown" type="Timer" parent="."]
 wait_time = 0.2
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]
+[connection signal="timeout" from="GameUi/DeadScreen/DeadBomb" to="." method="_on_dead_bomb_timeout"]
 [connection signal="timeout" from="RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
 [connection signal="timeout" from="ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
 [connection signal="timeout" from="TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]

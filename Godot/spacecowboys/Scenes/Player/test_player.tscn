@@ -68,8 +68,9 @@ repeat_times = 4
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
 texture = ExtResource("3_rty5c")
 
-[node name="Player" parent="." instance=ExtResource("1_ruc20")]
+[node name="Player" parent="." node_paths=PackedStringArray("EnemyManager") instance=ExtResource("1_ruc20")]
 scale = Vector2(0.53, 0.53)
+EnemyManager = NodePath("../EnemyManager")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="Player"]
 visible = false

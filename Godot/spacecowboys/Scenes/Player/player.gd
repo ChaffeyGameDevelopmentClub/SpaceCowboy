@@ -122,8 +122,9 @@ func changePnt(num):
 # Player Died
 func _on_health_died(entity: Node) -> void:
 	# Run death Screen
-	EnemyManager.killAll()
-	pass # Replace with function body.
+	$AnimatedSprite2D.play('default')
+	$GameUi/DeadScreen/DeadBomb.start()
+	#get_tree().paused = true
 
 # kid named infinite timers (i'm 3 seconds away from killing myself)
 func _on_revolver_cooldown_timeout() -> void:
@@ -134,4 +135,11 @@ func _on_shotgun_cooldown_timeout() -> void:
 
 func _on_tommy_gun_cooldown_timeout() -> void:
 	TommyGun.shoot(100.0)
+
+func _on_dead_bomb_timeout() -> void:
+	EnemyManager.killAll()
+	#get_tree().paused = false
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$GameUi/DeadScreen.visible = true
 #endregion

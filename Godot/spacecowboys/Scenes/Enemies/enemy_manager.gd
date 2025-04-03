@@ -65,7 +65,8 @@ func spawn_group(amount: int):
 func killAll():
 	var children = get_children()
 	for child in children:
-		child._on_health_died()
+		if child.name != "SpawnTimer":
+			child.diedScript()
 	
 func _on_spawn_timer_timeout() -> void:
 	spawn_group(spawnAmount)
