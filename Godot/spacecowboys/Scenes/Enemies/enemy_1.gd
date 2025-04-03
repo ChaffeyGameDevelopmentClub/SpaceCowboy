@@ -31,7 +31,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	state_machine.process_frame(delta)
 	
-	
+	#region old movement
 	## set tartget Pos
 	#set_movement_target(player.position)
 	#
@@ -50,6 +50,7 @@ func _process(delta: float) -> void:
 		#navAgent.set_velocity(new_velocity)
 	#else:
 		#_on_velocity_computed(new_velocity)
+	#endregion
 	
 	##region debug window
 	#var debugWindow = level.get_node("Player/Debug Window")
@@ -66,7 +67,7 @@ func set_movement_target(movement_target: Vector2):
 func _on_velocity_computed(safe_velocity: Vector2) -> void:
 	global_position = global_position.move_toward(global_position + safe_velocity, movement_delta)
 
-func _on_health_died(entity: Node) -> void:
+func _on_health_died(_entity: Node) -> void:
 	# might make a explosion?
 	# need to add to var to give player xp
 	queue_free()

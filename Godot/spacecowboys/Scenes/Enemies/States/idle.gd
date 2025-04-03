@@ -7,7 +7,7 @@ func enter() -> void:
 	super ()
 	#parent.velocity.x = 0
 
-func process_frame(delta: float) -> State:
+func process_frame(_delta: float) -> State:
 	#parent.velocity.y += gravity * delta
 	#parent.move_and_slide()
 	#

@@ -27,7 +27,7 @@ func _ready() -> void:
 	%SpawnTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 ## Used to pass a string to a int for Console commands

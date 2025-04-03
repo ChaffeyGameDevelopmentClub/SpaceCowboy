@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var hpC = health.current
 	var hpMax = health.max
 	var hpValue: float = ((hpC * 1.0) / (hpMax * 1.0)) * 100

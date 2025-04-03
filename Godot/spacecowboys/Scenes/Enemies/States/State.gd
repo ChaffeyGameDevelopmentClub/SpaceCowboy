@@ -12,5 +12,5 @@ func enter() -> void:
 func exit() -> void:
 	pass
 
-func process_frame(delta: float) -> State:
+func process_frame(_delta: float) -> State:
 	return null
