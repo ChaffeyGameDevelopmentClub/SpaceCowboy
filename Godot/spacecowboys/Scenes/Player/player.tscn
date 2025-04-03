@@ -219,6 +219,9 @@ default_font = SubResource("FontVariation_74mp2")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Revolver", "Shotgun", "TommyGun", "RevolverTimer", "ShotgunTimer", "TommyGunTimer")]
 script = ExtResource("1_htcer")
+RevolverEnabled = false
+ShotgunEnabled = true
+ShotgunUpgrade = 1
 Revolver = NodePath("Gun Belt/Aim/Revolver")
 Shotgun = NodePath("Gun Belt/Aim/Shotgun")
 TommyGun = NodePath("Gun Belt/Aim/TommyGun")

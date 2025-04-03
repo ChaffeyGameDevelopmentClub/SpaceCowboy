@@ -1,6 +1,6 @@
 extends Node2D
 
-const BASIC_PROJECTILE = preload("res://Scenes/Player/basic_projectile.tscn")
+const BASIC_PROJECTILE = preload("res://Scenes/Player/Guns/basic_projectile.tscn")
 
 func shoot(speed: float):
 	var projectile := BASIC_PROJECTILE.instantiate()

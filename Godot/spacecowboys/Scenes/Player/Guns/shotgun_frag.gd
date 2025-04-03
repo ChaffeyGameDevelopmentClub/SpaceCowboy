@@ -1,7 +1,7 @@
 class_name ShotgunFrag extends Node2D
 ## Shotgun Frag Projectile, used exclusively by the Shotgun Frag Tree
 
-const BASIC_PROJECTILE = preload("res://Scenes/Player/basic_projectile.tscn")
+const BASIC_PROJECTILE = preload("res://Scenes/Player/Guns/basic_projectile.tscn")
 
 # Editble Values
 @export var SPEED: float # Speed of the projectile

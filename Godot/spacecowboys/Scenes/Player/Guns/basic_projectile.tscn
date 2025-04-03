@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://s20aookoi877" path="res://Scenes/Player/Guns/basic_projectile.gd" id="1_4kpn1"]
 [ext_resource type="Script" uid="uid://b1vnxk5bfh6el" path="res://addons/health_hitbox_hurtbox/2d/hit_box_2d/hit_box_2d.gd" id="1_eq66d"]
-[ext_resource type="Texture2D" uid="uid://dmibp6vm6lcoa" path="res://Assets/Art/Shotgun Pellet.png" id="2_mq6iy"]
+[ext_resource type="Texture2D" uid="uid://c31v52ytcelgs" path="res://Assets/Art/SkillTree/revolver2.png" id="2_mq6iy"]
 [ext_resource type="Script" uid="uid://hrwhd52e5mkq" path="res://addons/health_hitbox_hurtbox/resources/action.gd" id="4_k1fpk"]
 
 [sub_resource type="Resource" id="Resource_4kpn1"]
@@ -12,8 +12,8 @@ type = 2
 amount = 1
 metadata/_custom_type_script = "uid://hrwhd52e5mkq"
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq6d5"]
-size = Vector2(7, 7)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mq6iy"]
+size = Vector2(13, 4)
 
 [node name="BasicProjectile" type="Node2D" node_paths=PackedStringArray("hit_box", "Sprite", "ExpireTimer")]
 script = ExtResource("1_4kpn1")
@@ -23,6 +23,8 @@ SpriteTexture = "res://Assets/Art/icon.svg"
 ExpireTimer = NodePath("ExpireTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_mq6iy")
 
 [node name="HitBox2D" type="Area2D" parent="."]
@@ -33,7 +35,7 @@ actions = Array[ExtResource("4_k1fpk")]([SubResource("Resource_4kpn1")])
 metadata/_custom_type_script = "uid://b1vnxk5bfh6el"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox2D"]
-shape = SubResource("RectangleShape2D_hq6d5")
+shape = SubResource("RectangleShape2D_mq6iy")
 
 [node name="ExpireTimer" type="Timer" parent="."]
 wait_time = 4.0

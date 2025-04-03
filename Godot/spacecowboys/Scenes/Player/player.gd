@@ -70,7 +70,7 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	lvlBar.value = Global.xp
 	if Global.xp == lvlUpThres:
-		lvlUpThres = lvlUpThres * 2.5
+		lvlUpThres = lvlUpThres * 1.5
 		level += 1
 		points += 1
 		changeLvl(level)
@@ -125,10 +125,12 @@ func fireRate(gun: String, x: String):
 	
 #endregion
 
+#region func text
 func changeLvl(num):
 	lvlLabel.text = "Lvl: " + str(num)
 func changePnt(num):
 	pointsLabel.text = "Points: " + str(num)
+#endregion
 
 #region Signals
 # Player Died

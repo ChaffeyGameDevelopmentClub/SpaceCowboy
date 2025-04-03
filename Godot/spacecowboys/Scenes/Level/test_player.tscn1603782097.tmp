@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://due5phr1c3qd6"]
+
+[ext_resource type="AudioStream" uid="uid://cl7e3w6a4ao1j" path="res://Assets/music/Large FE (Combat).wav" id="1_iqypb"]
+[ext_resource type="Script" uid="uid://csmgk0uqb7rwt" path="res://Scenes/Level/audio_stream_player.gd" id="2_ll4nx"]
+[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Level/bg.tres" id="3_3lxly"]
+[ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Bg/Planet.png" id="4_2jt8n"]
+[ext_resource type="Texture2D" uid="uid://derrxmm7q0kcs" path="res://Assets/Art/Bg/Planet2.png" id="5_vrlwo"]
+[ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="6_r3wiq"]
+[ext_resource type="PackedScene" uid="uid://bq3iu5swusugf" path="res://Scenes/Enemies/enemy_manager.tscn" id="7_g8gib"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
+vertices = PackedVector2Array(1226.24, 615, -1152.87, 615, -1135.12, -762.063, 1260.74, -778.922)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1145, -772, 1271, -789, 1236, 625, -1163, 625)])
+
+[node name="TestPlayer" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_iqypb")
+volume_db = -15.0
+autoplay = true
+script = ExtResource("2_ll4nx")
+
+[node name="ParallaxBackground" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="ParallaxLayer" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+sprite_frames = ExtResource("3_3lxly")
+
+[node name="ParallaxLayer2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.3, 0.3)
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+sprite_frames = ExtResource("3_3lxly")
+frame = 1
+
+[node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(192, 108)
+repeat_times = 8
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+sprite_frames = ExtResource("3_3lxly")
+frame = 2
+frame_progress = 0.210233
+
+[node name="ParallaxLayer4" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(500, 500)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+texture = ExtResource("4_2jt8n")
+
+[node name="ParallaxLayer5" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.08, 0.08)
+scroll_offset = Vector2(216.215, 247.875)
+repeat_size = Vector2(500, 500)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5"]
+texture = ExtResource("5_vrlwo")
+
+[node name="ParallaxLayer6" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0.08, 0.08)
+scroll_offset = Vector2(216.215, 247.875)
+repeat_size = Vector2(500, 500)
+repeat_times = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer6"]
+texture = ExtResource("5_vrlwo")
+
+[node name="Player" parent="." node_paths=PackedStringArray("EnemyManager") instance=ExtResource("6_r3wiq")]
+scale = Vector2(0.53, 0.53)
+EnemyManager = NodePath("../EnemyManager")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="Player"]
+visible = false
+scale = Vector2(1.88679, 1.88679)
+navigation_polygon = SubResource("NavigationPolygon_jgfpa")
+
+[node name="EnemyManager" parent="." instance=ExtResource("7_g8gib")]
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
