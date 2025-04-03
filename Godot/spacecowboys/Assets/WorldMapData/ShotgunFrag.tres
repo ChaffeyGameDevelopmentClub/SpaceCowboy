@@ -1,12 +1,12 @@
 [gd_resource type="Resource" script_class="WorldmapNodeData" load_steps=3 format=3 uid="uid://duhuiyd70m22n"]
 
 [ext_resource type="Script" uid="uid://we11bi5hlyk7" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="1_pprqe"]
-[ext_resource type="Texture2D" uid="uid://mosq04l354tf" path="res://Assets/Art/Hat HP.png" id="2_mlsa7"]
+[ext_resource type="Texture2D" uid="uid://bd47qjqe4wnki" path="res://Assets/Art/Shotgun Pellet fire.png" id="2_pprqe"]
 
 [resource]
 script = ExtResource("1_pprqe")
 id = &"shotgunFrag"
-texture = ExtResource("2_mlsa7")
+texture = ExtResource("2_pprqe")
 color = Color(1, 1, 1, 1)
 name = "Fragment Shots"
 desc = "Shoot exploding slugs!"
