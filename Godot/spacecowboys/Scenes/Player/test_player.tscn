@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=9 format=3 uid="uid://due5phr1c3qd6"]
 
 [ext_resource type="AudioStream" uid="uid://cl7e3w6a4ao1j" path="res://Assets/music/Large FE (Combat).wav" id="1_7g7fb"]
 [ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="1_jgfpa"]
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="2_aom2n"]
+[ext_resource type="Script" uid="uid://csmgk0uqb7rwt" path="res://Scenes/Player/audio_stream_player.gd" id="2_kik08"]
 [ext_resource type="PackedScene" uid="uid://bq3iu5swusugf" path="res://Scenes/Enemies/enemy_manager.tscn" id="3_jgfpa"]
 [ext_resource type="Texture2D" uid="uid://derrxmm7q0kcs" path="res://Assets/Art/Planet2.png" id="3_rty5c"]
 
@@ -18,6 +19,7 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(-1145, -772, 1271, -789
 stream = ExtResource("1_7g7fb")
 volume_db = -15.0
 autoplay = true
+script = ExtResource("2_kik08")
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 position = Vector2(576, 324)
@@ -84,3 +86,5 @@ scale = Vector2(1.88679, 1.88679)
 navigation_polygon = SubResource("NavigationPolygon_jgfpa")
 
 [node name="EnemyManager" parent="." instance=ExtResource("3_jgfpa")]
+
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
