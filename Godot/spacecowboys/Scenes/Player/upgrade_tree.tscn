@@ -1,5 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://c1p6kvshdq8o6"]
+[gd_scene load_steps=27 format=3 uid="uid://c1p6kvshdq8o6"]
 
+[ext_resource type="Script" uid="uid://wp3ququbm7vi" path="res://Scenes/Player/upgrade_tree.gd" id="1_b0q24"]
 [ext_resource type="Script" uid="uid://dimiqohun63w1" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_np6n0"]
 [ext_resource type="Texture2D" uid="uid://dfwrk73ka6j8x" path="res://addons/worldmap_builder/example/skilltree_borders.png" id="2_b0q24"]
 [ext_resource type="Script" uid="uid://bpxchefawwliy" path="res://addons/worldmap_builder/resource_types/wordmap_style.gd" id="3_p4f7p"]
@@ -22,7 +23,6 @@ atlas = ExtResource("2_b0q24")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_w5rdv"]
-load_path = "res://.godot/imported/skilltree_borders.png-b022ab63f57155a8a0a421454feb26f1.ctex"
 
 [sub_resource type="Resource" id="Resource_aa6er"]
 resource_name = "Active"
@@ -41,7 +41,6 @@ atlas = ExtResource("2_b0q24")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ivhx"]
-load_path = "res://.godot/imported/skilltree_borders.png-b022ab63f57155a8a0a421454feb26f1.ctex"
 
 [sub_resource type="Resource" id="Resource_4xltf"]
 resource_name = "Can Activate"
@@ -73,24 +72,27 @@ priority = 0
 
 [sub_resource type="Resource" id="Resource_vcgnp"]
 script = ExtResource("14_s43ry")
-id = &""
+id = &"Test Upgrade"
 texture = ExtResource("15_8i1bx")
 color = Color(1, 1, 1, 1)
-name = ""
-desc = ""
+name = "Test Upgrade"
+desc = "Test "
 size_tier = 0
 cost = 1
 tags = Array[StringName]([])
 data = Array[Resource]([])
 metadata/_custom_type_script = "uid://we11bi5hlyk7"
 
-[node name="UpgradeTree" type="Control"]
+[node name="UpgradeTree" type="Control" node_paths=PackedStringArray("UpgradeMenu")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_b0q24")
+UpgradeMenu = NodePath(".")
 
 [node name="MarginContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -308,12 +310,23 @@ connection_8/nodes = Vector2i(8, 9)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer" node_paths=PackedStringArray("initial_item")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("1_np6n0")
 initial_item = NodePath("WorldmapGraph")
+initial_node = 0
+style_active = SubResource("Resource_aa6er")
+style_can_activate = SubResource("Resource_4xltf")
+style_inactive = SubResource("Resource_2hquj")
 metadata/_custom_type_script = "uid://dimiqohun63w1"
 
 [node name="WorldmapGraph" type="Node2D" parent="MarginContainer/MarginContainer/WorldmapView"]

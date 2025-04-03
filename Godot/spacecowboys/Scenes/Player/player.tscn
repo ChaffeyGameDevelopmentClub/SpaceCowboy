@@ -1,8 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=49 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_xpcdj"]
+[ext_resource type="Texture2D" uid="uid://bmtneim73j8tn" path="res://Assets/Art/astronaut.png" id="2_dey5f"]
 [ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
 [ext_resource type="Texture2D" uid="uid://bgd1fiixjcvbe" path="res://Assets/Art/DeadAni.png" id="3_oikmp"]
 [ext_resource type="Script" uid="uid://cgtuofjkjxsch" path="res://Scenes/Player/aim.gd" id="5_dd0ac"]
@@ -12,7 +13,8 @@
 [ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
 [ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
-[ext_resource type="VideoStream" uid="uid://do0pyjamc4dc8" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
+[ext_resource type="VideoStream" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
+[ext_resource type="PackedScene" uid="uid://c1p6kvshdq8o6" path="res://Scenes/Player/upgrade_tree.tscn" id="13_7g0yx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
 atlas = ExtResource("3_oikmp")
@@ -220,13 +222,14 @@ script = ExtResource("1_htcer")
 Revolver = NodePath("Gun Belt/Aim/Revolver")
 Shotgun = NodePath("Gun Belt/Aim/Shotgun")
 TommyGun = NodePath("Gun Belt/Aim/TommyGun")
-RevolverTimer = NodePath("RevolverCooldown")
-ShotgunTimer = NodePath("ShotgunCooldown")
-TommyGunTimer = NodePath("TommyGunCooldown")
+RevolverTimer = NodePath("Gun Belt/Aim/Revolver/RevolverCooldown")
+ShotgunTimer = NodePath("Gun Belt/Aim/Shotgun/ShotgunCooldown")
+TommyGunTimer = NodePath("Gun Belt/Aim/TommyGun/TommyGunCooldown")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_xpcdj")
+position = Vector2(-0.5, -2)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_dey5f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3, 3)
@@ -275,6 +278,9 @@ script = ExtResource("5_dd0ac")
 [node name="Revolver" type="Node2D" parent="Gun Belt/Aim"]
 script = ExtResource("6_0u5uq")
 
+[node name="RevolverCooldown" type="Timer" parent="Gun Belt/Aim/Revolver"]
+wait_time = 0.33
+
 [node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/Revolver"]
 
 [node name="TestSprite" type="Sprite2D" parent="Gun Belt/Aim/Revolver/Spawner"]
@@ -291,6 +297,9 @@ shape = SubResource("CircleShape2D_mtuoh")
 [node name="Shotgun" type="Node2D" parent="Gun Belt/Aim"]
 script = ExtResource("7_jlvik")
 
+[node name="ShotgunCooldown" type="Timer" parent="Gun Belt/Aim/Shotgun"]
+wait_time = 0.5
+
 [node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/Shotgun"]
 
 [node name="TestSprite" type="Sprite2D" parent="Gun Belt/Aim/Shotgun/Spawner"]
@@ -306,6 +315,9 @@ shape = SubResource("CircleShape2D_mtuoh")
 
 [node name="TommyGun" type="Node2D" parent="Gun Belt/Aim"]
 script = ExtResource("8_gk6dx")
+
+[node name="TommyGunCooldown" type="Timer" parent="Gun Belt/Aim/TommyGun"]
+wait_time = 0.2
 
 [node name="Spawner" type="Marker2D" parent="Gun Belt/Aim/TommyGun"]
 
@@ -381,6 +393,10 @@ health = NodePath("../Hp Player/Health")
 [node name="PauseMenuController" type="Node" parent="GameUi"]
 script = ExtResource("10_jhyir")
 pause_menu_packed = ExtResource("11_74mp2")
+
+[node name="UpgradeTree" parent="GameUi" instance=ExtResource("13_7g0yx")]
+visible = false
+layout_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="GameUi"]
 texture_filter = 1
@@ -493,18 +509,9 @@ horizontal_alignment = 1
 [node name="DeadBomb" type="Timer" parent="GameUi/DeadScreen"]
 one_shot = true
 
-[node name="RevolverCooldown" type="Timer" parent="."]
-wait_time = 0.33
-
-[node name="ShotgunCooldown" type="Timer" parent="."]
-wait_time = 0.5
-
-[node name="TommyGunCooldown" type="Timer" parent="."]
-wait_time = 0.2
-
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]
+[connection signal="timeout" from="Gun Belt/Aim/Revolver/RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
+[connection signal="timeout" from="Gun Belt/Aim/Shotgun/ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
+[connection signal="timeout" from="Gun Belt/Aim/TommyGun/TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]
 [connection signal="timeout" from="GameUi/DeadScreen/DeadBomb" to="." method="_on_dead_bomb_timeout"]
-[connection signal="timeout" from="RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
-[connection signal="timeout" from="ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
-[connection signal="timeout" from="TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]
