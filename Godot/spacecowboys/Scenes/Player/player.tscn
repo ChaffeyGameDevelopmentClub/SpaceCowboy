@@ -400,7 +400,7 @@ pause_menu_packed = ExtResource("11_74mp2")
 [node name="UpgradeTree" parent="GameUi" instance=ExtResource("13_7g0yx")]
 visible = false
 layout_mode = 1
-scale = Vector2(2, 2)
+scale = Vector2(1.2, 1.2)
 
 [node name="PlayerUi" type="PanelContainer" parent="GameUi"]
 texture_filter = 1
