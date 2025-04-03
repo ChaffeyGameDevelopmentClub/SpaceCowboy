@@ -48,7 +48,6 @@ extends CharacterBody2D
 
 var level := 1
 var lvlUpThres := 100.0
-var points := 0
 
 @onready var hp = $"Hp Player/Health"
 @onready var lvlBar = $GameUi/PlayerUi/Levelup/LevelupBar
@@ -73,7 +72,7 @@ func _ready() -> void:
 	#lvl up
 	lvlBar.max_value = lvlUpThres
 	changeLvl(level)
-	changePnt(points)
+	changePnt(Global.skillPoints)
 
 func _physics_process(_delta: float) -> void:
 	# Xp/Level up stuff
@@ -81,9 +80,9 @@ func _physics_process(_delta: float) -> void:
 	if Global.xp == lvlUpThres:
 		lvlUpThres = lvlUpThres * 1.5
 		level += 1
-		points += 1
+		Global.skillPoints += 1
 		changeLvl(level)
-		changePnt(points)
+		changePnt(Global.skillPoints)
 		Global.xp = 0
 	
 	
@@ -111,9 +110,9 @@ func lvlUp(x: String):
 		Console.print_line("Please Enter a Int")
 	else:
 		level += lvl
-		points += lvl
+		Global.skillPoints += lvl
 		changeLvl(level)
-		changePnt(points)
+		changePnt(Global.skillPoints)
 func fireRate(gun: String, x: String):
 	var rate = float(x)
 	if gun == "Revolver":

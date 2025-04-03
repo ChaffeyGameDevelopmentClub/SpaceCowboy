@@ -7,7 +7,7 @@ var menu_up = false
 @onready var player = get_parent().get_parent()
 
 func _input(event): 
-	if Input.is_action_just_pressed("Upgrade") and player.points > 0:
+	if Input.is_action_just_pressed("Upgrade") and Global.skillPoints > 0:
 		if menu_up:
 			UpgradeMenu.hide()
 			get_tree().paused = false
