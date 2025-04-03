@@ -20,9 +20,17 @@ extends CharacterBody2D
 @export var TommyUpgrade: int ## Gun Upgrades 0 is base, 1 and 2 refer to their upgrade trees
 
 @export_group("Fire Rate")
-@export var RevolverFireRate: float = 0.33 ## Time in seconds between shots
+@export var RevolverFireRate: float = 0.4 ## Time in seconds between shots
 @export var ShotgunFireRate: float = 0.8 ## Time in seconds between shots
-@export var TommyGunFireRate: float = 0.2 ## Time in seconds between shots
+@export var TommyGunFireRate: float = 0.15 ## Time in seconds between shots
+
+@export_group("Damage")
+@export var RevolverDamage := 4
+@export var ShotgunDamage := 3
+@export var TommyDamage := 1
+
+@export_group("Upgrade Settings")
+@export var ShotgunCount := 3
 
 ## Nodes for Script
 @export_group("Nodes")
@@ -68,6 +76,7 @@ func _ready() -> void:
 	changePnt(points)
 
 func _physics_process(_delta: float) -> void:
+	# Xp/Level up stuff
 	lvlBar.value = Global.xp
 	if Global.xp == lvlUpThres:
 		lvlUpThres = lvlUpThres * 1.5
@@ -141,11 +150,12 @@ func _on_health_died(_entity: Node) -> void:
 	#get_tree().paused = true
 
 # kid named infinite timers (i'm 3 seconds away from killing myself)
+# Need to add upgrades for revolver and tommy
 func _on_revolver_cooldown_timeout() -> void:
 	Revolver.shoot(80.0)
 
 func _on_shotgun_cooldown_timeout() -> void:
-	Shotgun.shoot(80.0, 3, ShotgunUpgrade)
+	Shotgun.shoot(80.0, ShotgunCount, ShotgunUpgrade)
 
 func _on_tommy_gun_cooldown_timeout() -> void:
 	TommyGun.shoot(100.0)
