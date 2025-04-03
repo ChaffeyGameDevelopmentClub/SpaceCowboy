@@ -69,10 +69,9 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	# Open Upgrade Tree
 	if Input.is_action_just_pressed("Upgrade") and points > 0:
-		# Need to replace this code
-		ShotgunUpgrade = ShotgunUpgrade + 1
-		if ShotgunUpgrade >= 3:
-			ShotgunUpgrade = 0
+		# Need to make upgrade Tree
+		points -= 1 # Move this to confirm for upgrade Tree
+		
 	
 	lvlBar.value = Global.xp
 	if Global.xp == lvlUpThres:
