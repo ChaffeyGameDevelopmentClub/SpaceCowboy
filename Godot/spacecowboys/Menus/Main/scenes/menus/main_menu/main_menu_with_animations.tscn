@@ -1,9 +1,20 @@
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 [gd_scene load_steps=18 format=3 uid="uid://dtu327bgoccp2"]
 
 [ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_4jqdy"]
 [ext_resource type="Script" path="res://Menus/Main/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_r8w81"]
 [ext_resource type="PackedScene" path="res://Menus/Main/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_o3ttw"]
 [ext_resource type="PackedScene" path="res://Menus/Main/scenes/credits/credits.tscn" id="4_krsic"]
+=======
+[gd_scene load_steps=22 format=3 uid="uid://camfb03mphwql"]
+
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cwfon"]
+[ext_resource type="Script" uid="uid://cxtsuas5h82j5" path="res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_w5kk6"]
+[ext_resource type="PackedScene" uid="uid://dwo04y7s12mr4" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
+[ext_resource type="PackedScene" uid="uid://bk4f734ktawnv" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
+[ext_resource type="FontFile" uid="uid://cshvju01stfwv" path="res://Scenes/Menus/assets/fonts/Rexlia Rg.otf" id="5_w5kk6"]
+[ext_resource type="Theme" uid="uid://buj8ki83cebw0" path="res://Scenes/Menus/scenes/menus/main_menu/button_theme.tres" id="6_w0i4b"]
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -349,10 +360,23 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 [node name="MainMenu" instance=ExtResource("1_4jqdy")]
 script = ExtResource("2_r8w81")
 options_packed_scene = ExtResource("3_o3ttw")
 credits_packed_scene = ExtResource("4_krsic")
+=======
+[sub_resource type="Theme" id="Theme_w0i4b"]
+default_font = ExtResource("5_w5kk6")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w0i4b"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="MainMenu" instance=ExtResource("1_cwfon")]
+script = ExtResource("2_w5kk6")
+options_packed_scene = ExtResource("3_w0i4b")
+credits_packed_scene = ExtResource("4_yss76")
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1"]
 libraries = {
@@ -364,14 +388,30 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
+[node name="BackgroundMusicPlayer" parent="." index="3"]
+bus = &"Master"
+
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="TitleMargin" parent="MenuContainer" index="0"]
+theme_override_constants/margin_top = 149
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+theme = SubResource("Theme_w0i4b")
+text = "SPACE COWBOYS"
+
+[node name="SubTitleMargin" parent="MenuContainer" index="1"]
+visible = false
+
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="MenuButtonsMargin" parent="MenuContainer" index="2"]
+theme_override_constants/margin_top = 26
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
@@ -379,10 +419,32 @@ modulate = Color(1, 1, 1, 0)
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
 lock = true
 
+[node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+theme = ExtResource("6_w0i4b")
+
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
 text = "Continue"
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
+theme = ExtResource("6_w0i4b")
+
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+theme = ExtResource("6_w0i4b")
+
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="4"]
+theme = ExtResource("6_w0i4b")
+
+[node name="Panel" type="Panel" parent="." index="10"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_w0i4b")
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]

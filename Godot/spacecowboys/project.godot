@@ -10,8 +10,13 @@ config_version=5
 
 [application]
 
+<<<<<<< Updated upstream
 config/name="SpaceCowboys"
 run/main_scene="res://Menus/Main/scenes/opening/opening_with_logo.tscn"
+=======
+config/name="SPACE COWBOYS"
+run/main_scene="res://Scenes/Menus/scenes/opening/opening_with_logo.tscn"
+>>>>>>> Stashed changes
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -85,4 +90,13 @@ locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/
 [maaacks_menus_template]
 
 disable_plugin_dialogues=true
+<<<<<<< Updated upstream
 copy_path="res://Menus/Main"
+=======
+copy_path="res://Scenes/Menus"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+>>>>>>> Stashed changes
