@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="WorldmapNodeData" load_steps=3 format=3 uid="uid://rq0wacy2gdgd"]
+
+[ext_resource type="Script" uid="uid://we11bi5hlyk7" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="1_f04lo"]
+[ext_resource type="Texture2D" uid="uid://be7rn70vf4iw2" path="res://Assets/Art/SkillTree/healthup.png" id="2_mdfk6"]
+
+[resource]
+script = ExtResource("1_f04lo")
+id = &"hpUp"
+texture = ExtResource("2_mdfk6")
+color = Color(1, 1, 1, 1)
+name = "Health Up"
+desc = "Increase Max HP by 1 hit"
+size_tier = 0
+cost = 1
+tags = Array[StringName]([])
+data = Array[Resource]([])
+metadata/_custom_type_script = "uid://we11bi5hlyk7"

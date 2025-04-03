@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c1p6kvshdq8o6"]
+[gd_scene load_steps=33 format=3 uid="uid://c1p6kvshdq8o6"]
 
 [ext_resource type="Script" uid="uid://wp3ququbm7vi" path="res://Scenes/Player/upgrade_tree.gd" id="1_b0q24"]
 [ext_resource type="Script" uid="uid://dimiqohun63w1" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_np6n0"]
@@ -15,8 +15,14 @@
 [ext_resource type="Resource" uid="uid://xy4g21ll2705" path="res://addons/worldmap_builder/example/skills/small_weapon.tres" id="12_7jcfe"]
 [ext_resource type="Resource" uid="uid://dnpf51y01rqsa" path="res://addons/worldmap_builder/example/skills/small_ward.tres" id="13_wv0xe"]
 [ext_resource type="Script" uid="uid://we11bi5hlyk7" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="14_s43ry"]
-[ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="15_8i1bx"]
+[ext_resource type="Resource" uid="uid://btk5q2r0jaoyp" path="res://Assets/WorldMapData/RevolverBase.tres" id="15_np6n0"]
+[ext_resource type="Resource" uid="uid://rq0wacy2gdgd" path="res://Assets/WorldMapData/HealthUp.tres" id="16_b0q24"]
 [ext_resource type="Script" uid="uid://vhgjifvuu06e" path="res://addons/worldmap_builder/example/input_handler.gd" id="16_ciffm"]
+[ext_resource type="Resource" uid="uid://kxf5f3ph2i81" path="res://Assets/WorldMapData/DamageUp.tres" id="17_vaa33"]
+[ext_resource type="Resource" uid="uid://bra1v5t0oy681" path="res://Assets/WorldMapData/FireRateUp.tres" id="18_ejxcp"]
+[ext_resource type="Resource" uid="uid://bm7f5gv6juuy2" path="res://Assets/WorldMapData/FireShotgun.tres" id="19_vyexl"]
+[ext_resource type="Resource" uid="uid://fx7aipgeifuk" path="res://Assets/WorldMapData/TommyGamble.tres" id="20_vaa33"]
+[ext_resource type="Resource" uid="uid://dycnlxx6ofcp2" path="res://Assets/WorldMapData/ShotgunBase.tres" id="21_ejxcp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vql2y"]
 atlas = ExtResource("2_b0q24")
@@ -70,13 +76,12 @@ straight_tex_region = Rect2(0, 0, 128, 8)
 straight_tex_repeat = false
 priority = 0
 
-[sub_resource type="Resource" id="Resource_vcgnp"]
+[sub_resource type="Resource" id="Resource_rxlik"]
 script = ExtResource("14_s43ry")
-id = &"Test Upgrade"
-texture = ExtResource("15_8i1bx")
+id = &"tommyBase"
 color = Color(1, 1, 1, 1)
-name = "Test Upgrade"
-desc = "Test "
+name = "Tommy Gun"
+desc = "Unlock a Tommy Gun"
 size_tier = 0
 cost = 1
 tags = Array[StringName]([])
@@ -110,6 +115,7 @@ theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="Map" type="Control" parent="MarginContainer/ActualMarginContainer" node_paths=PackedStringArray("initial_item")]
+visible = false
 custom_minimum_size = Vector2(846, 600)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -310,13 +316,13 @@ connection_8/nodes = Vector2i(8, 9)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 140
+theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
 [node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer" node_paths=PackedStringArray("initial_item")]
-custom_minimum_size = Vector2(128, 128)
+custom_minimum_size = Vector2(455, 450)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -324,6 +330,7 @@ mouse_filter = 2
 script = ExtResource("1_np6n0")
 initial_item = NodePath("WorldmapGraph")
 initial_node = 0
+auto_minsize = false
 style_active = SubResource("Resource_aa6er")
 style_can_activate = SubResource("Resource_4xltf")
 style_inactive = SubResource("Resource_2hquj")
@@ -331,14 +338,42 @@ metadata/_custom_type_script = "uid://dimiqohun63w1"
 
 [node name="WorldmapGraph" type="Node2D" parent="MarginContainer/MarginContainer/WorldmapView"]
 script = ExtResource("10_shgro")
+connection_mode = 1
 node_grid_snap = 1
-node_count = 1
-node_0/data = SubResource("Resource_vcgnp")
-node_0/position = Vector2(64, 64)
-connection_count = 0
+node_count = 8
+node_0/data = ExtResource("15_np6n0")
+node_0/position = Vector2(559, 496)
+node_1/data = ExtResource("16_b0q24")
+node_1/position = Vector2(558, 365)
+node_2/data = ExtResource("17_vaa33")
+node_2/position = Vector2(432, 462)
+node_3/data = ExtResource("18_ejxcp")
+node_3/position = Vector2(680, 461)
+node_4/data = ExtResource("19_vyexl")
+node_4/position = Vector2(202, 270)
+node_5/data = ExtResource("20_vaa33")
+node_5/position = Vector2(863, 287)
+node_6/data = ExtResource("21_ejxcp")
+node_6/position = Vector2(304, 374)
+node_7/data = SubResource("Resource_rxlik")
+node_7/position = Vector2(0, 0)
+connection_count = 7
+connection_0/nodes = Vector2i(0, 1)
+connection_1/nodes = Vector2i(0, 1)
+connection_2/nodes = Vector2i(2, 0)
+connection_3/nodes = Vector2i(3, 0)
+connection_4/nodes = Vector2i(5, 3)
+connection_5/nodes = Vector2i(6, 2)
+connection_6/nodes = Vector2i(4, 6)
 metadata/_custom_type_script = "uid://2pey7ennkk3b"
 
-[node name="InputHandler" type="Node" parent="." node_paths=PackedStringArray("skilltree", "skillpoint_label", "skill_reset", "stat_list", "tooltip_root", "tooltip_title", "tooltip_desc", "add_target")]
+[node name="InputHandler" type="Control" parent="." node_paths=PackedStringArray("skilltree", "skillpoint_label", "skill_reset", "stat_list", "tooltip_root", "tooltip_title", "tooltip_desc", "add_target")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("16_ciffm")
 skilltree = NodePath("../MarginContainer/ActualMarginContainer/Map")
 skillpoint_label = NodePath("Anchors/BottomBox/Panel/Points")
@@ -350,10 +385,13 @@ tooltip_desc = NodePath("Tooltip/MarginContainer/VBoxContainer/Label2")
 add_target = NodePath("../MarginContainer/ActualMarginContainer/Map/WorldmapGraph")
 
 [node name="Tooltip" type="PanelContainer" parent="InputHandler"]
-offset_left = -274.0
-offset_top = -214.0
-offset_right = 78.0
-offset_bottom = -124.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -368.0
+offset_bottom = 100.0
+grow_horizontal = 0
 mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="InputHandler/Tooltip"]
@@ -388,6 +426,7 @@ text = "This skill gives +0.0001% to some useless stat.
 I have this type of skill trees."
 
 [node name="Anchors" type="MarginContainer" parent="InputHandler"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
