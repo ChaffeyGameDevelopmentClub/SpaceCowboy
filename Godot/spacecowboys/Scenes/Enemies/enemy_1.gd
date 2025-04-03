@@ -3,6 +3,7 @@ extends Node2D
 ## Basic Enemy that just slowly moves towards the player.
 ## Reference from [url]https://docs.godotengine.org/en/4.4/tutorials/navigation/navigation_using_navigationagents.html[/url]
 
+const DIEDANI := preload("res://Scenes/Enemies/enemy_died.tscn")
 const SPEED := 50.0
 
 # From Docs
@@ -69,5 +70,9 @@ func _on_velocity_computed(safe_velocity: Vector2) -> void:
 
 func _on_health_died(_entity: Node) -> void:
 	# might make a explosion?
+	var died = DIEDANI.instantiate()
+	get_tree().current_scene.add_child(died)
+	died.transform = self.global_transform
 	# need to add to var to give player xp
+	Global.xp += 10
 	queue_free()

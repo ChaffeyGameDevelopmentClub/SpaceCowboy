@@ -34,9 +34,18 @@ extends CharacterBody2D
 @export var RevolverTimer: Timer
 @export var ShotgunTimer: Timer
 @export var TommyGunTimer: Timer
+@export_subgroup("Other Nodes")
+@export var EnemyManager: Node2D
 #endregion
 
+var level := 1
+var lvlUpThres := 100
+var points := 0
+
 @onready var hp = $"Hp Player/Health"
+@onready var lvlBar = $GameUi/PanelContainer/Levelup/LevelupBar
+@onready var lvlLabel = $GameUi/PanelContainer/Levelup/MarginContainer/Lvl
+@onready var pointsLabel = $GameUi/PanelContainer/Levelup/MarginContainer/VBoxContainer/Points
 
 func _ready() -> void:
 	Console.pause_enabled = true
@@ -50,16 +59,31 @@ func _ready() -> void:
 		ShotgunTimer.start(ShotgunFireRate)
 	if TommyEnabled:
 		TommyGunTimer.start(TommyGunFireRate)
-
+	
+	#lvl up
+	lvlBar.max_value = lvlUpThres
+	changeLvl(level)
 
 func _physics_process(_delta: float) -> void:
-	#region physics
-	# Temp
-	if Input.is_action_just_pressed("UpgradeTest"):
+	# Open Upgrade Tree
+	if Input.is_action_just_pressed("Upgrade") and points > 0:
+		# Need to replace this code
 		ShotgunUpgrade = ShotgunUpgrade + 1
 		if ShotgunUpgrade >= 3:
 			ShotgunUpgrade = 0
-	# Run directional Inputs.
+	
+	lvlBar.value = Global.xp
+	if Global.xp == lvlUpThres:
+		lvlUpThres = lvlUpThres * 2.5
+		level += 1
+		points += 1
+		changeLvl(level)
+		changePnt(points)
+		Global.xp = 0
+	
+	
+	
+	#region Run directional Inputs
 	var direction := Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 	if direction:
 		velocity = direction * speed
@@ -68,6 +92,7 @@ func _physics_process(_delta: float) -> void:
 		velocity.y = move_toward(velocity.y, 0, speed)
 	move_and_slide()
 	#endregion
+
 
 #region debug Funcs
 # -1 hp
@@ -78,10 +103,16 @@ func heal_player():
 	hp.current += 1
 #endregion
 
+func changeLvl(num):
+	lvlLabel.text = "Lvl: " + str(num)
+func changePnt(num):
+	pointsLabel.text = "Points: " + str(num)
+
 #region Signals
 # Player Died
 func _on_health_died(entity: Node) -> void:
 	# Run death Screen
+	EnemyManager.killAll()
 	pass # Replace with function body.
 
 # kid named infinite timers (i'm 3 seconds away from killing myself)

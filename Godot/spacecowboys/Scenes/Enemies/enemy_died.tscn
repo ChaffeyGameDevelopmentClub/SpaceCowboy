@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://cvwl6ftcqq335"]
+
+[ext_resource type="Texture2D" uid="uid://cuxk0rni5ndbu" path="res://Assets/Art/Bomb1.png" id="1_v7j8g"]
+[ext_resource type="Script" uid="uid://djer3uoavfigb" path="res://Scenes/Enemies/enemy_died.gd" id="1_ysoe0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ysoe0"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiduj"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ei624"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oorqa"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_irdlf"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mq33h"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3flv8"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tim6"]
+atlas = ExtResource("1_v7j8g")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mmkt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ysoe0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiduj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ei624")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oorqa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_irdlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mq33h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3flv8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tim6")
+}],
+"loop": true,
+"name": &"died",
+"speed": 8.0
+}]
+
+[node name="enemyDied" type="Node2D"]
+script = ExtResource("1_ysoe0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2mmkt")
+animation = &"died"
+frame_progress = 0.183935
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
