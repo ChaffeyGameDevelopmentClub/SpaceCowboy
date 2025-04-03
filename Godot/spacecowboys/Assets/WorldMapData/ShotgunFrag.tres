@@ -1,7 +1,14 @@
-[gd_resource type="Resource" script_class="WorldmapNodeData" load_steps=3 format=3 uid="uid://duhuiyd70m22n"]
+[gd_resource type="Resource" script_class="WorldmapNodeData" load_steps=5 format=3 uid="uid://duhuiyd70m22n"]
 
+[ext_resource type="Script" uid="uid://co6p8a0l64i1m" path="res://addons/worldmap_builder/example/skill_stats.gd" id="1_mlsa7"]
 [ext_resource type="Script" uid="uid://we11bi5hlyk7" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="1_pprqe"]
 [ext_resource type="Texture2D" uid="uid://bd47qjqe4wnki" path="res://Assets/Art/Shotgun Pellet fire.png" id="2_pprqe"]
+
+[sub_resource type="Resource" id="Resource_dwjt6"]
+script = ExtResource("1_mlsa7")
+name = &"shotgunUpgrade"
+amount = 1.0
+metadata/_custom_type_script = "uid://co6p8a0l64i1m"
 
 [resource]
 script = ExtResource("1_pprqe")
@@ -13,5 +20,5 @@ desc = "Shoot exploding slugs!"
 size_tier = 0
 cost = 1
 tags = Array[StringName]([])
-data = Array[Resource]([])
+data = Array[Resource]([SubResource("Resource_dwjt6")])
 metadata/_custom_type_script = "uid://we11bi5hlyk7"

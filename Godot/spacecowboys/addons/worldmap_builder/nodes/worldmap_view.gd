@@ -508,6 +508,7 @@ func get_all_nodes() -> Dictionary:
 	var state_keys := _worldmap_state.keys()
 	var state_values := _worldmap_state.values()
 	for i in state_keys.size():
+		print_debug("test")
 		var cur_view_item : NodePath = state_keys[i]
 		var cur_view_values : Array = state_values[i]
 		for j in cur_view_values.size():

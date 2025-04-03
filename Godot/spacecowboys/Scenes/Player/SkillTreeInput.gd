@@ -20,28 +20,33 @@ var points
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#skilltree.max_unlock_cost = starting_skillpoints # Not sure what this is for?
-	#_skillpoints_changed() # Called on ready
-	#tooltip_root.hide()
+	 # set starting skill points for debug, use players points later.
+	# skilltree.max_unlock_cost = how many points player has
+	skilltree.max_unlock_cost = starting_skillpoints
+	_skillpoints_changed() # Called on ready
+	tooltip_root.hide()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	points = Global.skillPoints
+	points = Global.skillPoints # Players Points
 	
 # From example - Edited Slightly
 func _skillpoints_changed():
+	print("Skillpoints Changed")
 	# Formatting Point Label
 	skillpoint_label.text = skillpoint_label_format.format([skilltree.max_unlock_cost])
-	# Skill Reset button
+	# Skill Reset button - Disables if you earned points
 	skill_reset.disabled = skilltree.max_unlock_cost >= starting_skillpoints
 	# Display Stat Increases
 	var stat_list_text : Array[String] = []
 	var stats_raw := skilltree.get_all_nodes()
+	print(stats_raw)
 	var stats := {} # Need to pass this to player?
 	for k in stats_raw:
 		var v : int = stats_raw[k]
+		#print(stats_raw[k])
 		if v == 0: continue
 		# Need to make our own resource for this. 
 		for node_data_item in k.data:

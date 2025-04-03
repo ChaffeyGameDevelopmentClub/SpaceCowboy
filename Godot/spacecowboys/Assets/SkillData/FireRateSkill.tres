@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_36nhj")
-name = &""
-amount = 0.0
+name = &"fireRate"
+amount = 0.5
 metadata/_custom_type_script = "uid://co6p8a0l64i1m"

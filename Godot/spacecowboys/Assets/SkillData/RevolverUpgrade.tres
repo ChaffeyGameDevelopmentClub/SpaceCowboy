@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_n0t2h")
-name = &""
+name = &"revolverUpgrade"
 amount = 0.0
 metadata/_custom_type_script = "uid://co6p8a0l64i1m"

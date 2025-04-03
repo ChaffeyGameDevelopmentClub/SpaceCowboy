@@ -5,7 +5,6 @@ extends Control
 var menu_up = false
 
 @onready var player = get_parent().get_parent()
-
 func _input(event): 
 	if Input.is_action_just_pressed("Upgrade") and Global.skillPoints > 0:
 		if menu_up:
@@ -16,3 +15,4 @@ func _input(event):
 			UpgradeMenu.show()
 			get_tree().paused = true
 			menu_up = true
+			
