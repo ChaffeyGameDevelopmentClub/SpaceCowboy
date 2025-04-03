@@ -83,7 +83,8 @@ tags = Array[StringName]([])
 data = Array[Resource]([])
 metadata/_custom_type_script = "uid://we11bi5hlyk7"
 
-[node name="UpgradeTree" type="Control"]
+[node name="UpgradeTree" type="Control" node_paths=PackedStringArray("UpgradeMenu")]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,6 +92,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b0q24")
+UpgradeMenu = NodePath(".")
 
 [node name="MarginContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
@@ -308,10 +310,17 @@ connection_8/nodes = Vector2i(8, 9)
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 140
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
 [node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer" node_paths=PackedStringArray("initial_item")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
 script = ExtResource("1_np6n0")
 initial_item = NodePath("WorldmapGraph")
 initial_node = 0
