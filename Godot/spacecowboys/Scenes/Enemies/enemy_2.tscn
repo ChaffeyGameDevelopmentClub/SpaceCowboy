@@ -84,6 +84,7 @@ charge_state = NodePath("../Charge")
 
 [node name="Charge" type="Node" parent="StateMachine" node_paths=PackedStringArray("move_state")]
 script = ExtResource("9_pfv8h")
+ChargeSpeed = 125.0
 move_state = NodePath("../Move")
 
 [node name="ChargeTime" type="Timer" parent="StateMachine/Charge"]

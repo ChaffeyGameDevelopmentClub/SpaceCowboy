@@ -25,12 +25,12 @@ func process_frame(delta: float) -> State:
 	if NavigationServer2D.map_get_iteration_id(parent.navAgent.get_navigation_map()) == 0:
 		print_debug("Nav Map Not Found")
 		return
-	if parent.navAgent.is_navigation_finished():
-		print_debug("Nav Finished")
-		return
+	#if parent.navAgent.is_navigation_finished():
+		#print_debug("Nav Finished")
+		#return
 		
 	if chargeDone:
-		return 
+		return move_state
 	
 	return null
 
@@ -40,10 +40,10 @@ func _on_charge_time_timeout() -> void:
 	parent.movement_delta = ChargeSpeed * Delta # Set Speed
 	var next_path_position: Vector2 = parent.navAgent.get_next_path_position() # Should target players pos on timeout
 	new_velocity = parent.global_position.direction_to(next_path_position) * parent.movement_delta # sets new velocity
-
-func _on_target_time_timeout() -> void:
 	if parent.navAgent.avoidance_enabled:
 		parent.navAgent.set_velocity(new_velocity)
 	else:
 		parent._on_velocity_computed(new_velocity)
-	
+
+func _on_target_time_timeout() -> void:
+	chargeDone = true
