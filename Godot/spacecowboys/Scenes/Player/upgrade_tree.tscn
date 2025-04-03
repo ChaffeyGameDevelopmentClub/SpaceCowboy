@@ -72,11 +72,11 @@ priority = 0
 
 [sub_resource type="Resource" id="Resource_vcgnp"]
 script = ExtResource("14_s43ry")
-id = &""
+id = &"Test Upgrade"
 texture = ExtResource("15_8i1bx")
 color = Color(1, 1, 1, 1)
-name = ""
-desc = ""
+name = "Test Upgrade"
+desc = "Test "
 size_tier = 0
 cost = 1
 tags = Array[StringName]([])
@@ -314,6 +314,10 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("1_np6n0")
 initial_item = NodePath("WorldmapGraph")
+initial_node = 0
+style_active = SubResource("Resource_aa6er")
+style_can_activate = SubResource("Resource_4xltf")
+style_inactive = SubResource("Resource_2hquj")
 metadata/_custom_type_script = "uid://dimiqohun63w1"
 
 [node name="WorldmapGraph" type="Node2D" parent="MarginContainer/MarginContainer/WorldmapView"]

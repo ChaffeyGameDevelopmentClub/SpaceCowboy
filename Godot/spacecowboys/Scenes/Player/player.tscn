@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=48 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
 [ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
 [ext_resource type="VideoStream" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
+[ext_resource type="PackedScene" uid="uid://c1p6kvshdq8o6" path="res://Scenes/Player/upgrade_tree.tscn" id="13_7g0yx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
 atlas = ExtResource("3_oikmp")
@@ -390,6 +391,9 @@ health = NodePath("../Hp Player/Health")
 [node name="PauseMenuController" type="Node" parent="GameUi"]
 script = ExtResource("10_jhyir")
 pause_menu_packed = ExtResource("11_74mp2")
+
+[node name="UpgradeTree" parent="GameUi" instance=ExtResource("13_7g0yx")]
+layout_mode = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="GameUi"]
 texture_filter = 1
