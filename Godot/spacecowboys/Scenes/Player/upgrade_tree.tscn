@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1p6kvshdq8o6"]
+[gd_scene load_steps=36 format=3 uid="uid://c1p6kvshdq8o6"]
 
 [ext_resource type="Script" uid="uid://wp3ququbm7vi" path="res://Scenes/Player/upgrade_tree.gd" id="1_b0q24"]
 [ext_resource type="Script" uid="uid://dimiqohun63w1" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_np6n0"]
@@ -14,7 +14,6 @@
 [ext_resource type="Resource" uid="uid://b1t0k6su5o8v" path="res://addons/worldmap_builder/example/skills/small_mp.tres" id="11_e7i62"]
 [ext_resource type="Resource" uid="uid://xy4g21ll2705" path="res://addons/worldmap_builder/example/skills/small_weapon.tres" id="12_7jcfe"]
 [ext_resource type="Resource" uid="uid://dnpf51y01rqsa" path="res://addons/worldmap_builder/example/skills/small_ward.tres" id="13_wv0xe"]
-[ext_resource type="Script" uid="uid://we11bi5hlyk7" path="res://addons/worldmap_builder/resource_types/worldmap_node_data.gd" id="14_s43ry"]
 [ext_resource type="Resource" uid="uid://btk5q2r0jaoyp" path="res://Assets/WorldMapData/RevolverBase.tres" id="15_np6n0"]
 [ext_resource type="Resource" uid="uid://rq0wacy2gdgd" path="res://Assets/WorldMapData/HealthUp.tres" id="16_b0q24"]
 [ext_resource type="Script" uid="uid://vhgjifvuu06e" path="res://addons/worldmap_builder/example/input_handler.gd" id="16_ciffm"]
@@ -23,6 +22,11 @@
 [ext_resource type="Resource" uid="uid://bm7f5gv6juuy2" path="res://Assets/WorldMapData/FireShotgun.tres" id="19_vyexl"]
 [ext_resource type="Resource" uid="uid://fx7aipgeifuk" path="res://Assets/WorldMapData/TommyGamble.tres" id="20_vaa33"]
 [ext_resource type="Resource" uid="uid://dycnlxx6ofcp2" path="res://Assets/WorldMapData/ShotgunBase.tres" id="21_ejxcp"]
+[ext_resource type="Resource" uid="uid://ddl7csifqev0" path="res://Assets/WorldMapData/TommyBase.tres" id="23_shgro"]
+[ext_resource type="Resource" uid="uid://duhuiyd70m22n" path="res://Assets/WorldMapData/ShotgunFrag.tres" id="24_e7i62"]
+[ext_resource type="Resource" uid="uid://b2t1g54qv7qny" path="res://Assets/WorldMapData/TommyBurst.tres" id="25_7jcfe"]
+[ext_resource type="Resource" uid="uid://chogtix2b38q6" path="res://Assets/WorldMapData/RevolverDeadeye.tres" id="26_e7i62"]
+[ext_resource type="Resource" uid="uid://bw6oiu2ux712h" path="res://Assets/WorldMapData/RevolverPierce.tres" id="27_7jcfe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vql2y"]
 atlas = ExtResource("2_b0q24")
@@ -75,18 +79,6 @@ straight_tex = ExtResource("2_b0q24")
 straight_tex_region = Rect2(0, 0, 128, 8)
 straight_tex_repeat = false
 priority = 0
-
-[sub_resource type="Resource" id="Resource_rxlik"]
-script = ExtResource("14_s43ry")
-id = &"tommyBase"
-color = Color(1, 1, 1, 1)
-name = "Tommy Gun"
-desc = "Unlock a Tommy Gun"
-size_tier = 0
-cost = 1
-tags = Array[StringName]([])
-data = Array[Resource]([])
-metadata/_custom_type_script = "uid://we11bi5hlyk7"
 
 [node name="UpgradeTree" type="Control" node_paths=PackedStringArray("UpgradeMenu")]
 process_mode = 3
@@ -314,59 +306,6 @@ connection_6/nodes = Vector2i(6, 7)
 connection_7/nodes = Vector2i(7, 8)
 connection_8/nodes = Vector2i(8, 9)
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer" node_paths=PackedStringArray("initial_item")]
-custom_minimum_size = Vector2(455, 450)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-mouse_filter = 2
-script = ExtResource("1_np6n0")
-initial_item = NodePath("WorldmapGraph")
-initial_node = 0
-auto_minsize = false
-style_active = SubResource("Resource_aa6er")
-style_can_activate = SubResource("Resource_4xltf")
-style_inactive = SubResource("Resource_2hquj")
-metadata/_custom_type_script = "uid://dimiqohun63w1"
-
-[node name="WorldmapGraph" type="Node2D" parent="MarginContainer/MarginContainer/WorldmapView"]
-script = ExtResource("10_shgro")
-connection_mode = 1
-node_grid_snap = 1
-node_count = 8
-node_0/data = ExtResource("15_np6n0")
-node_0/position = Vector2(559, 496)
-node_1/data = ExtResource("16_b0q24")
-node_1/position = Vector2(558, 365)
-node_2/data = ExtResource("17_vaa33")
-node_2/position = Vector2(432, 462)
-node_3/data = ExtResource("18_ejxcp")
-node_3/position = Vector2(680, 461)
-node_4/data = ExtResource("19_vyexl")
-node_4/position = Vector2(202, 270)
-node_5/data = ExtResource("20_vaa33")
-node_5/position = Vector2(863, 287)
-node_6/data = ExtResource("21_ejxcp")
-node_6/position = Vector2(304, 374)
-node_7/data = SubResource("Resource_rxlik")
-node_7/position = Vector2(0, 0)
-connection_count = 7
-connection_0/nodes = Vector2i(0, 1)
-connection_1/nodes = Vector2i(0, 1)
-connection_2/nodes = Vector2i(2, 0)
-connection_3/nodes = Vector2i(3, 0)
-connection_4/nodes = Vector2i(5, 3)
-connection_5/nodes = Vector2i(6, 2)
-connection_6/nodes = Vector2i(4, 6)
-metadata/_custom_type_script = "uid://2pey7ennkk3b"
-
 [node name="InputHandler" type="Control" parent="." node_paths=PackedStringArray("skilltree", "skillpoint_label", "skill_reset", "stat_list", "tooltip_root", "tooltip_title", "tooltip_desc", "add_target")]
 layout_mode = 1
 anchors_preset = 15
@@ -539,6 +478,105 @@ layout_mode = 2
 [node name="Control" type="Control" parent="InputHandler/Anchors/BottomLeftBox"]
 custom_minimum_size = Vector2(8, 8)
 layout_mode = 2
+
+[node name="MapCont" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 384.0
+offset_bottom = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MapCont"]
+layout_mode = 2
+offset_right = 487.0
+offset_bottom = 482.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="WorldmapView" type="Control" parent="MapCont/MarginContainer2" node_paths=PackedStringArray("initial_item")]
+custom_minimum_size = Vector2(455, 450)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_np6n0")
+initial_item = NodePath("WorldmapGraph")
+initial_node = 0
+auto_minsize = false
+style_active = SubResource("Resource_aa6er")
+style_can_activate = SubResource("Resource_4xltf")
+style_inactive = SubResource("Resource_2hquj")
+metadata/_custom_type_script = "uid://dimiqohun63w1"
+
+[node name="WorldmapGraph" type="Node2D" parent="MapCont/MarginContainer2/WorldmapView"]
+script = ExtResource("10_shgro")
+connection_mode = 1
+node_grid_snap = 1
+node_count = 18
+node_0/data = ExtResource("15_np6n0")
+node_0/position = Vector2(559, 496)
+node_1/data = ExtResource("16_b0q24")
+node_1/position = Vector2(561, 356)
+node_2/data = ExtResource("17_vaa33")
+node_2/position = Vector2(459, 461)
+node_3/data = ExtResource("18_ejxcp")
+node_3/position = Vector2(656, 458)
+node_4/data = ExtResource("19_vyexl")
+node_4/position = Vector2(291, 462)
+node_5/data = ExtResource("20_vaa33")
+node_5/position = Vector2(836, 456)
+node_6/data = ExtResource("21_ejxcp")
+node_6/position = Vector2(376, 379)
+node_7/data = ExtResource("23_shgro")
+node_7/position = Vector2(739, 376)
+node_8/data = ExtResource("24_e7i62")
+node_8/position = Vector2(295, 272)
+node_9/data = ExtResource("25_7jcfe")
+node_9/position = Vector2(812, 291)
+node_10/data = ExtResource("26_e7i62")
+node_10/position = Vector2(478, 234)
+node_11/data = ExtResource("27_7jcfe")
+node_11/position = Vector2(627, 226)
+node_12/data = ExtResource("17_vaa33")
+node_12/position = Vector2(160, 463)
+node_13/data = ExtResource("17_vaa33")
+node_13/position = Vector2(158, 273)
+node_14/data = ExtResource("17_vaa33")
+node_14/position = Vector2(48, 366)
+node_15/data = ExtResource("16_b0q24")
+node_15/position = Vector2(396, 118)
+node_16/data = ExtResource("16_b0q24")
+node_16/position = Vector2(682, 110)
+node_17/data = ExtResource("16_b0q24")
+node_17/position = Vector2(553, 110)
+connection_count = 21
+connection_0/nodes = Vector2i(0, 1)
+connection_1/nodes = Vector2i(0, 1)
+connection_2/nodes = Vector2i(2, 0)
+connection_3/nodes = Vector2i(3, 0)
+connection_4/nodes = Vector2i(6, 2)
+connection_5/nodes = Vector2i(4, 6)
+connection_6/nodes = Vector2i(7, 3)
+connection_7/nodes = Vector2i(7, 5)
+connection_8/nodes = Vector2i(6, 8)
+connection_9/nodes = Vector2i(7, 9)
+connection_10/nodes = Vector2i(11, 1)
+connection_11/nodes = Vector2i(10, 1)
+connection_12/nodes = Vector2i(4, 12)
+connection_13/nodes = Vector2i(8, 13)
+connection_14/nodes = Vector2i(12, 13)
+connection_15/nodes = Vector2i(12, 14)
+connection_16/nodes = Vector2i(14, 13)
+connection_17/nodes = Vector2i(10, 15)
+connection_18/nodes = Vector2i(16, 11)
+connection_19/nodes = Vector2i(16, 17)
+connection_20/nodes = Vector2i(17, 18)
+metadata/_custom_type_script = "uid://2pey7ennkk3b"
 
 [connection signal="node_gui_input" from="MarginContainer/ActualMarginContainer/Map" to="InputHandler" method="_on_map_node_gui_input"]
 [connection signal="node_mouse_entered" from="MarginContainer/ActualMarginContainer/Map" to="InputHandler" method="_on_map_node_mouse_entered"]
