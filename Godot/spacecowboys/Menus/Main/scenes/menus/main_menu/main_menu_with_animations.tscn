@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 [gd_scene load_steps=18 format=3 uid="uid://dtu327bgoccp2"]
 
 [ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_4jqdy"]
@@ -6,14 +7,23 @@
 [ext_resource type="PackedScene" path="res://Menus/Main/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_o3ttw"]
 [ext_resource type="PackedScene" path="res://Menus/Main/scenes/credits/credits.tscn" id="4_krsic"]
 =======
+=======
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 [gd_scene load_steps=22 format=3 uid="uid://camfb03mphwql"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cwfon"]
 [ext_resource type="Script" uid="uid://cxtsuas5h82j5" path="res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_w5kk6"]
 [ext_resource type="PackedScene" uid="uid://dwo04y7s12mr4" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
 [ext_resource type="PackedScene" uid="uid://bk4f734ktawnv" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 [ext_resource type="FontFile" uid="uid://cshvju01stfwv" path="res://Scenes/Menus/assets/fonts/Rexlia Rg.otf" id="5_w5kk6"]
 [ext_resource type="Theme" uid="uid://buj8ki83cebw0" path="res://Scenes/Menus/scenes/menus/main_menu/button_theme.tres" id="6_w0i4b"]
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
+=======
+[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="5_w5kk6"]
+[ext_resource type="Texture2D" uid="uid://drkoeml0ork88" path="res://Assets/Art/asteroid.png" id="6_yss76"]
+[ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="7_38vhq"]
+[ext_resource type="FontFile" uid="uid://cxem6yqtf778d" path="res://Scenes/Menus/assets/Rexlia Rg.otf" id="8_38vhq"]
 >>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [sub_resource type="Animation" id="1"]
@@ -401,17 +411,28 @@ theme_override_constants/margin_top = 149
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 theme = SubResource("Theme_w0i4b")
 text = "SPACE COWBOYS"
 
 [node name="SubTitleMargin" parent="MenuContainer" index="1"]
 visible = false
+=======
+theme_override_fonts/font = ExtResource("8_38vhq")
+text = "SpaceCowboys"
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 [node name="MenuButtonsMargin" parent="MenuContainer" index="2"]
 theme_override_constants/margin_top = 26
+=======
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+theme_override_fonts/font = ExtResource("8_38vhq")
+text = "A CGDC Game"
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
@@ -420,7 +441,11 @@ modulate = Color(1, 1, 1, 0)
 lock = true
 
 [node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 theme = ExtResource("6_w0i4b")
+=======
+theme_override_fonts/font = ExtResource("8_38vhq")
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true
@@ -429,6 +454,7 @@ layout_mode = 2
 text = "Continue"
 
 [node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
+<<<<<<< Updated upstream:Godot/spacecowboys/Menus/Main/scenes/menus/main_menu/main_menu_with_animations.tscn
 theme = ExtResource("6_w0i4b")
 
 [node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
@@ -446,5 +472,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_w0i4b")
+=======
+theme_override_fonts/font = ExtResource("8_38vhq")
+
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+theme_override_fonts/font = ExtResource("8_38vhq")
+
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="4"]
+theme_override_fonts/font = ExtResource("8_38vhq")
+>>>>>>> Stashed changes:Godot/spacecowboys/Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]

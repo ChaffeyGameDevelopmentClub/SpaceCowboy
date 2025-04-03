@@ -11,9 +11,12 @@ config_version=5
 [application]
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 config/name="SpaceCowboys"
 run/main_scene="res://Menus/Main/scenes/opening/opening_with_logo.tscn"
 =======
+=======
+>>>>>>> Stashed changes
 config/name="SPACE COWBOYS"
 run/main_scene="res://Scenes/Menus/scenes/opening/opening_with_logo.tscn"
 >>>>>>> Stashed changes
@@ -99,4 +102,7 @@ copy_path="res://Scenes/Menus"
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
