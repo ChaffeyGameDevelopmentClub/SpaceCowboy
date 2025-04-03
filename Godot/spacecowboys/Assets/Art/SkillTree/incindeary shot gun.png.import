@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3iwghc1uj8q1"
-path="res://.godot/imported/Background-Sheet.png-6531146ebf6b4371b515ba9930a6ab00.ctex"
+uid="uid://dfouul6qf4mmp"
+path="res://.godot/imported/incindeary shot gun.png-1c457310f6c87565e06ae07c878cfa88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Bg/Background-Sheet.png"
-dest_files=["res://.godot/imported/Background-Sheet.png-6531146ebf6b4371b515ba9930a6ab00.ctex"]
+source_file="res://Assets/Art/SkillTree/incindeary shot gun.png"
+dest_files=["res://.godot/imported/incindeary shot gun.png-1c457310f6c87565e06ae07c878cfa88.ctex"]
 
 [params]
 

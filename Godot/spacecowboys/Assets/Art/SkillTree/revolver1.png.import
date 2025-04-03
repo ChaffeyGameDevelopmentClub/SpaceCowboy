@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3iwghc1uj8q1"
-path="res://.godot/imported/Background-Sheet.png-6531146ebf6b4371b515ba9930a6ab00.ctex"
+uid="uid://dsbn1oja4pvts"
+path="res://.godot/imported/revolver1.png-e8772ec246716c6750c34eac14a6c5db.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Art/Bg/Background-Sheet.png"
-dest_files=["res://.godot/imported/Background-Sheet.png-6531146ebf6b4371b515ba9930a6ab00.ctex"]
+source_file="res://Assets/Art/SkillTree/revolver1.png"
+dest_files=["res://.godot/imported/revolver1.png-e8772ec246716c6750c34eac14a6c5db.ctex"]
 
 [params]
 
