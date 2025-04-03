@@ -51,7 +51,7 @@ func addToScene(node):
 	get_tree().current_scene.add_child(node)
 
 class ShotGun:
-	var speed : int
+	var speed: int
 	var count := 1
 	var dmg := 1
 	var realself
@@ -62,5 +62,5 @@ class ShotGun:
 			projectile.get_node("HitBox2D").actions[0].amount = dmg
 			projectile.SPEED = speed # set speed to value passed through
 			projectile.transform = realself.get_node('Spawner').global_transform # move projectile to spawn location
-			projectile.rotate(deg_to_rad(randf_range(-25.0,25))) # randomize spread
+			projectile.rotate(deg_to_rad(randf_range(-25.0, 25))) # randomize spread
 			projectile.ExpireTimer.start() # start expire timer

@@ -1,9 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://camfb03mphwql"]
+[gd_scene load_steps=21 format=3 uid="uid://camfb03mphwql"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cwfon"]
-[ext_resource type="Script" path="res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_w5kk6"]
-[ext_resource type="PackedScene" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
-[ext_resource type="PackedScene" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cwfon"]
+[ext_resource type="Script" uid="uid://cxtsuas5h82j5" path="res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_w5kk6"]
+[ext_resource type="PackedScene" uid="uid://dwo04y7s12mr4" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
+[ext_resource type="PackedScene" uid="uid://bk4f734ktawnv" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
+[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="5_w5kk6"]
+[ext_resource type="Texture2D" uid="uid://drkoeml0ork88" path="res://Assets/Art/asteroid.png" id="6_yss76"]
+[ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="7_38vhq"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -351,6 +354,7 @@ graph_offset = Vector2(-180.277, 49)
 
 [node name="MainMenu" instance=ExtResource("1_cwfon")]
 script = ExtResource("2_w5kk6")
+game_scene_path = "uid://due5phr1c3qd6"
 options_packed_scene = ExtResource("3_w0i4b")
 credits_packed_scene = ExtResource("4_yss76")
 
@@ -364,14 +368,69 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
+[node name="BackgroundMusicPlayer" parent="." index="3"]
+bus = &"Master"
+
+[node name="TempBackground" type="Control" parent="." index="4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="TempBackground" index="0"]
+position = Vector2(576, 324)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("5_w5kk6")
+
+[node name="TextureRect2" type="AnimatedSprite2D" parent="TempBackground" index="1"]
+position = Vector2(592.52, 356)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("5_w5kk6")
+frame = 1
+
+[node name="TextureRect3" type="AnimatedSprite2D" parent="TempBackground" index="2"]
+position = Vector2(568.22, 314.795)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("5_w5kk6")
+frame = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="TempBackground" index="3"]
+position = Vector2(176, 479)
+rotation = -0.545637
+scale = Vector2(5, 5)
+texture = ExtResource("6_yss76")
+
+[node name="Sprite2D2" type="Sprite2D" parent="TempBackground" index="4"]
+position = Vector2(987, 351)
+rotation = 0.217025
+scale = Vector2(5, 5)
+texture = ExtResource("7_38vhq")
+
+[node name="Sprite2D3" type="Sprite2D" parent="TempBackground" index="5"]
+position = Vector2(987, 351)
+rotation = 0.217025
+scale = Vector2(5, 5)
+texture = ExtResource("7_38vhq")
+
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="MenuContainer" parent="." index="7"]
+theme_override_constants/margin_top = 33
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+text = "SpaceCowboys"
+
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
+
+[node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+text = "A CGDC Game"
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]
 modulate = Color(1, 1, 1, 0)

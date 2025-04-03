@@ -28,7 +28,7 @@ func explode(count: int, speed: float, touched: bool):
 		get_tree().current_scene.add_child(projectile)
 		projectile.SPEED = speed
 		projectile.transform = hit_box.global_transform
-		projectile.rotate(deg_to_rad(randf_range(-180.0,180)))
+		projectile.rotate(deg_to_rad(randf_range(-180.0, 180)))
 		projectile.ExpireTimer.start()
 	queue_free()
 

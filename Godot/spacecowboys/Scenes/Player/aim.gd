@@ -7,7 +7,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#region Player Aim
 	#Aim Code
 	# Gets sides of triangle
@@ -18,12 +18,12 @@ func _process(delta: float) -> void:
 	var angle
 	# If x is negitive
 	if shoot_direction.x < 0:
-		rad = atan(shoot_direction.y/shoot_direction.x)
+		rad = atan(shoot_direction.y / shoot_direction.x)
 		angle = rad_to_deg(rad)
 		angle -= 180
 	# else
 	else:
-		rad = atan(shoot_direction.y/shoot_direction.x)
+		rad = atan(shoot_direction.y / shoot_direction.x)
 		angle = rad_to_deg(rad)
 	# Rotates 
 	self.set_rotation_degrees(angle)
@@ -32,4 +32,3 @@ func _process(delta: float) -> void:
 	#Debug
 	%Angle.text = "Angle: " + str(angle)
 	%MousePos.text = "Dir:" + str(shoot_direction)
-	

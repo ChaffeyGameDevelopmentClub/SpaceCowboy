@@ -1,14 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=22 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_xpcdj"]
 [ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
 [ext_resource type="Script" uid="uid://cgtuofjkjxsch" path="res://Scenes/Player/aim.gd" id="5_dd0ac"]
-[ext_resource type="Script" path="res://Scenes/Player/gun_base.gd" id="6_0u5uq"]
+[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/revolver.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
 [ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/shotgun.gd" id="7_jlvik"]
-[ext_resource type="Script" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
+[ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
 radius = 14.3178
@@ -27,10 +29,24 @@ default_font_size = 15
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dd0ac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
-bg_color = Color(0, 0.517593, 0, 1)
+bg_color = Color(0, 0.517647, 0, 0.196078)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
-bg_color = Color(0, 0.760784, 0, 1)
+bg_color = Color(0, 0.760784, 0, 0.196078)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="FontVariation" id="FontVariation_74mp2"]
+variation_embolden = 2.0
+
+[sub_resource type="Theme" id="Theme_oikmp"]
+default_font = SubResource("FontVariation_74mp2")
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("Revolver", "Shotgun", "TommyGun", "RevolverTimer", "ShotgunTimer", "TommyGunTimer")]
 script = ExtResource("1_htcer")
@@ -191,6 +207,10 @@ scale = Vector2(0.25, 0.25)
 script = ExtResource("7_0u5uq")
 health = NodePath("../Hp Player/Health")
 
+[node name="PauseMenuController" type="Node" parent="GameUi"]
+script = ExtResource("10_jhyir")
+pause_menu_packed = ExtResource("11_74mp2")
+
 [node name="PanelContainer" type="PanelContainer" parent="GameUi"]
 texture_filter = 1
 layout_mode = 1
@@ -231,6 +251,41 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 value = 72.28
 show_percentage = false
 
+[node name="Levelup" type="MarginContainer" parent="GameUi/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -500
+theme_override_constants/margin_top = -275
+theme_override_constants/margin_right = -500
+theme_override_constants/margin_bottom = 885
+
+[node name="LevelupBar" type="ProgressBar" parent="GameUi/PanelContainer/Levelup"]
+layout_mode = 2
+size_flags_vertical = 1
+theme = SubResource("Theme_oikmp")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
+
+[node name="LvlLabels" type="MarginContainer" parent="GameUi/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = -490
+theme_override_constants/margin_top = -235
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/PanelContainer/LvlLabels"]
+layout_mode = 2
+
+[node name="Points" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"GraphNodeTitleLabel"
+theme_override_font_sizes/font_size = 30
+text = "Points:"
+
+[node name="Lvl" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"GraphNodeTitleLabel"
+theme_override_font_sizes/font_size = 30
+text = "Lvl:"
+
 [node name="RevolverCooldown" type="Timer" parent="."]
 wait_time = 0.33
 
@@ -240,6 +295,7 @@ wait_time = 0.5
 [node name="TommyGunCooldown" type="Timer" parent="."]
 wait_time = 0.2
 
+[connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]
 [connection signal="timeout" from="RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
 [connection signal="timeout" from="ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
 [connection signal="timeout" from="TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]
