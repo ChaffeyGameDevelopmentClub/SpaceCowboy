@@ -3,6 +3,7 @@ extends Node2D
 
 # Load Enemy scenes
 const ENEMY1 = preload("res://Scenes/Enemies/enemy_1.tscn")
+const ENEMY2 = preload("res://Scenes/Enemies/enemy_2.tscn")
 
 @export var spawnRadius = 500 ## The max radius they will spawn from the player
 @export var protectionRadius = 150 ## The radius from the player they can't spawn in
@@ -41,7 +42,12 @@ func spawn_group(amount: int):
 	Console.print_line("%s Spawned" % amount)
 	var enemy: Array[Node] = []
 	for i in amount:
-		enemy.push_back(ENEMY1.instantiate())
+		var type = rand.randi_range(0,1)
+		match type:
+			0:
+				enemy.push_back(ENEMY1.instantiate())
+			1:
+				enemy.push_back(ENEMY2.instantiate())
 		# Adds to scene
 		self.add_child(enemy[i])
 		# Positions Enemy Group

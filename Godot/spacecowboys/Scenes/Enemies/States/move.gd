@@ -3,6 +3,8 @@ extends State
 #@export var idle_state: State
 
 @export var speed: float = 50
+@export_group("States")
+@export var charge_state: State
 
 func enter() -> void:
 	super ()
@@ -23,6 +25,9 @@ func process_frame(delta: float) -> State:
 	parent.movement_delta = speed * delta
 	var next_path_position: Vector2 = parent.navAgent.get_next_path_position()
 	var new_velocity: Vector2 = parent.global_position.direction_to(next_path_position) * parent.movement_delta
+	if parent.navAgent.distance_to_target() < 50 and charge_state:
+		return charge_state
+	
 	if parent.navAgent.avoidance_enabled:
 		parent.navAgent.set_velocity(new_velocity)
 	else:
