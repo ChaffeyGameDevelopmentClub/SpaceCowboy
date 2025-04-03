@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=3 uid="uid://bni2qubpevn68"]
+[gd_scene load_steps=47 format=3 uid="uid://bni2qubpevn68"]
 
 [ext_resource type="Script" uid="uid://ww77l0tnjr8f" path="res://Scenes/Player/player.gd" id="1_htcer"]
 [ext_resource type="Script" uid="uid://dr8bvnfebp76" path="res://addons/health_hitbox_hurtbox/health/health.gd" id="1_uvnfx"]
 [ext_resource type="Texture2D" uid="uid://cu5orkt4vt6qb" path="res://Assets/Art/icon.svg" id="1_xpcdj"]
 [ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
+[ext_resource type="Texture2D" uid="uid://bgd1fiixjcvbe" path="res://Assets/Art/DeadAni.png" id="3_oikmp"]
 [ext_resource type="Script" uid="uid://cgtuofjkjxsch" path="res://Scenes/Player/aim.gd" id="5_dd0ac"]
 [ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/revolver.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
@@ -11,6 +12,172 @@
 [ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
 [ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
+[ext_resource type="VideoStream" uid="uid://do0pyjamc4dc8" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7g0yx"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dey5f"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5xpd"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks1b7"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnuln"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqm4k"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcvs5"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ma5"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(1536, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eksi1"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(1728, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jincj"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(1920, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqdc0"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(2112, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr1w5"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(2304, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ythyg"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(2496, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmb2s"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(2688, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ur3l4"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(2880, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ahak"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(3072, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rukb4"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(3264, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4no11"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(3456, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcwna"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(3648, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1agin"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(3840, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jnj1"]
+atlas = ExtResource("3_oikmp")
+region = Rect2(4032, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_enij7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06tpx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7g0yx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dey5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5xpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks1b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnuln")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqm4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcvs5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8ma5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eksi1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jincj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqdc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qr1w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ythyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmb2s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ur3l4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ahak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rukb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4no11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcwna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1agin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jnj1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tugb3"]
 radius = 14.3178
@@ -60,6 +227,10 @@ TommyGunTimer = NodePath("TommyGunCooldown")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_xpcdj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_enij7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -286,6 +457,42 @@ theme_type_variation = &"GraphNodeTitleLabel"
 theme_override_font_sizes/font_size = 30
 text = "Lvl:"
 
+[node name="DeadScreen" type="PanelContainer" parent="GameUi"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUi/DeadScreen"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/DeadScreen/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 350
+theme_override_constants/margin_right = 350
+
+[node name="TextureRect" type="VideoStreamPlayer" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+stream = ExtResource("13_06tpx")
+autoplay = true
+loop = true
+
+[node name="Label" type="Label" parent="GameUi/DeadScreen/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "You Died."
+horizontal_alignment = 1
+
+[node name="DeadBomb" type="Timer" parent="GameUi/DeadScreen"]
+one_shot = true
+
 [node name="RevolverCooldown" type="Timer" parent="."]
 wait_time = 0.33
 
@@ -295,7 +502,9 @@ wait_time = 0.5
 [node name="TommyGunCooldown" type="Timer" parent="."]
 wait_time = 0.2
 
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="died" from="Hp Player/Health" to="." method="_on_health_died"]
+[connection signal="timeout" from="GameUi/DeadScreen/DeadBomb" to="." method="_on_dead_bomb_timeout"]
 [connection signal="timeout" from="RevolverCooldown" to="." method="_on_revolver_cooldown_timeout"]
 [connection signal="timeout" from="ShotgunCooldown" to="." method="_on_shotgun_cooldown_timeout"]
 [connection signal="timeout" from="TommyGunCooldown" to="." method="_on_tommy_gun_cooldown_timeout"]

@@ -52,6 +52,7 @@ func _ready() -> void:
 	Console.add_command("dmg", dmg_player, 0, 0, "Hurt Player")
 	Console.add_command("heal", heal_player, 0, 0, "Heal Player")
 	Console.add_command("lvlUp", lvlUp, 1, 1, "Lvl up Player by amount")
+	Console.add_command("fireRate", fireRate, 2, 2, "up the fireRate")
 	
 	# This way fire rate is dynamic
 	if RevolverEnabled:
@@ -111,6 +112,24 @@ func lvlUp(x: String):
 		points += lvl
 		changeLvl(level)
 		changePnt(points)
+func fireRate(gun: String,x: String):
+	var rate = float(x)
+	if gun == "Revolver":
+		RevolverFireRate = rate
+		if RevolverEnabled:
+			RevolverTimer.start(RevolverFireRate)
+		Console.print_line("Revolver Rate now: %s" % RevolverFireRate)
+	if gun == "Shotgun":
+		ShotgunFireRate = rate
+		if ShotgunEnabled:
+			ShotgunTimer.start(ShotgunFireRate)
+		Console.print_line("Shotgun Rate now: %s" % ShotgunFireRate)
+	if gun == "Tommy":
+		TommyGunFireRate = rate
+		if TommyEnabled:
+			TommyGunTimer.start(TommyGunFireRate)
+		Console.print_line("Tommy Rate now: %s" % TommyGunFireRate)
+	
 #endregion
 
 func changeLvl(num):
@@ -122,8 +141,9 @@ func changePnt(num):
 # Player Died
 func _on_health_died(entity: Node) -> void:
 	# Run death Screen
-	EnemyManager.killAll()
-	pass # Replace with function body.
+	$AnimatedSprite2D.play('default')
+	$GameUi/DeadScreen/DeadBomb.start()
+	#get_tree().paused = true
 
 # kid named infinite timers (i'm 3 seconds away from killing myself)
 func _on_revolver_cooldown_timeout() -> void:
@@ -134,4 +154,11 @@ func _on_shotgun_cooldown_timeout() -> void:
 
 func _on_tommy_gun_cooldown_timeout() -> void:
 	TommyGun.shoot(100.0)
+
+func _on_dead_bomb_timeout() -> void:
+	EnemyManager.killAll()
+	#get_tree().paused = false
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$GameUi/DeadScreen.visible = true
 #endregion

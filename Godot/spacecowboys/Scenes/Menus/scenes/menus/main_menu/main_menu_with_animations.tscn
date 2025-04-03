@@ -1,12 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://camfb03mphwql"]
+[gd_scene load_steps=23 format=3 uid="uid://camfb03mphwql"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_cwfon"]
 [ext_resource type="Script" uid="uid://cxtsuas5h82j5" path="res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_w5kk6"]
 [ext_resource type="PackedScene" uid="uid://dwo04y7s12mr4" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
 [ext_resource type="PackedScene" uid="uid://bk4f734ktawnv" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
+[ext_resource type="AudioStream" uid="uid://cefob4uchwbp1" path="res://Assets/music/Holstered Astronaut (Menu).wav" id="5_38vhq"]
 [ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="5_w5kk6"]
 [ext_resource type="Texture2D" uid="uid://drkoeml0ork88" path="res://Assets/Art/asteroid.png" id="6_yss76"]
 [ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="7_38vhq"]
+[ext_resource type="FontFile" uid="uid://rqas0pubkj0d" path="res://Assets/Art/Rexlia Rg.otf" id="9_73sup"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -369,7 +371,8 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundMusicPlayer" parent="." index="3"]
-bus = &"Master"
+stream = ExtResource("5_38vhq")
+volume_db = -17.0
 
 [node name="TempBackground" type="Control" parent="." index="4"]
 layout_mode = 1
@@ -424,12 +427,14 @@ theme_override_constants/margin_top = 33
 modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+theme_override_fonts/font = ExtResource("9_73sup")
 text = "SpaceCowboys"
 
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
 [node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0"]
+theme_override_fonts/font = ExtResource("9_73sup")
 text = "A CGDC Game"
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" index="0"]

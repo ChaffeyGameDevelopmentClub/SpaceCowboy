@@ -8,7 +8,12 @@
 bg_color = Color(0.0431373, 0.0431373, 0.0431373, 0.490196)
 
 [node name="PauseMenu" instance=ExtResource("1_4csx2")]
-scale = Vector2(0.3, 0.3)
+z_index = 1
+offset_left = -570.0
+offset_top = -300.0
+offset_right = -570.0
+offset_bottom = -300.0
+scale = Vector2(2, 2)
 script = ExtResource("2_2vhkv")
 options_packed_scene = ExtResource("3_72fix")
 main_menu_scene = "res://Scenes/Menus/scenes/menus/main_menu/main_menu_with_animations.tscn"

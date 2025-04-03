@@ -309,10 +309,11 @@ connection_8/nodes = Vector2i(8, 9)
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer"]
+[node name="WorldmapView" type="Control" parent="MarginContainer/MarginContainer" node_paths=PackedStringArray("initial_item")]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 script = ExtResource("1_np6n0")
+initial_item = NodePath("WorldmapGraph")
 metadata/_custom_type_script = "uid://dimiqohun63w1"
 
 [node name="WorldmapGraph" type="Node2D" parent="MarginContainer/MarginContainer/WorldmapView"]
