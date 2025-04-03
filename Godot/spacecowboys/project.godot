@@ -22,6 +22,7 @@ AppConfig="*res://addons/maaacks_menus_template/base/scenes/autoloads/app_config
 SceneLoader="*res://addons/maaacks_menus_template/base/scenes/autoloads/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
+Global="*res://Scenes/Components/Global.gd"
 
 [display]
 
@@ -42,9 +43,6 @@ folder_colors={
 "res://Scenes/Components/": "orange",
 "res://Scenes/Enemies/": "red",
 "res://Scenes/Player/": "yellow",
-"res://Scenes/Test Stuff/": "gray",
-"res://Scenes/Test Stuff/Enemy/": "blue",
-"res://Scenes/Test Stuff/Player/": "blue",
 "res://Scripts/": "red",
 "res://Sound Assets/": "red",
 "res://UI/": "green"

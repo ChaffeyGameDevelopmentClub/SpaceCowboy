@@ -1,6 +1,7 @@
 extends CharacterBody2D
 ## Main Player Script. Used to run movement, Debug commands, and run weapon scripts.
 
+#region Exports
 ## Player Values
 @export_category("Player")
 @export var speed := 65.0
@@ -33,6 +34,7 @@ extends CharacterBody2D
 @export var RevolverTimer: Timer
 @export var ShotgunTimer: Timer
 @export var TommyGunTimer: Timer
+#endregion
 
 @onready var hp = $"Hp Player/Health"
 
@@ -40,12 +42,18 @@ func _ready() -> void:
 	Console.pause_enabled = true
 	Console.add_command("dmg", dmg_player)
 	Console.add_command("heal", heal_player)
+	
 	# This way fire rate is dynamic
-	#RevolverTimer.start(RevolverFireRate)
-	ShotgunTimer.start(ShotgunFireRate)
-	#TommyGunTimer.start(TommyGunFireRate)
+	if RevolverEnabled:
+		RevolverTimer.start(RevolverFireRate)
+	if ShotgunEnabled:
+		ShotgunTimer.start(ShotgunFireRate)
+	if TommyEnabled:
+		TommyGunTimer.start(TommyGunFireRate)
+
 
 func _physics_process(_delta: float) -> void:
+	#region physics
 	# Temp
 	if Input.is_action_just_pressed("UpgradeTest"):
 		ShotgunUpgrade = ShotgunUpgrade + 1
@@ -59,6 +67,7 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.y = move_toward(velocity.y, 0, speed)
 	move_and_slide()
+	#endregion
 
 #region debug Funcs
 # -1 hp
@@ -69,7 +78,13 @@ func heal_player():
 	hp.current += 1
 #endregion
 
-## kid named infinite timers (i'm 3 seconds away from killing myself)
+#region Signals
+# Player Died
+func _on_health_died(entity: Node) -> void:
+	# Run death Screen
+	pass # Replace with function body.
+
+# kid named infinite timers (i'm 3 seconds away from killing myself)
 func _on_revolver_cooldown_timeout() -> void:
 	Revolver.shoot(80.0)
 
@@ -78,3 +93,4 @@ func _on_shotgun_cooldown_timeout() -> void:
 
 func _on_tommy_gun_cooldown_timeout() -> void:
 	TommyGun.shoot(100.0)
+#endregion
