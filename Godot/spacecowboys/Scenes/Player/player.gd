@@ -44,13 +44,14 @@ var points := 0
 
 @onready var hp = $"Hp Player/Health"
 @onready var lvlBar = $GameUi/PanelContainer/Levelup/LevelupBar
-@onready var lvlLabel = $GameUi/PanelContainer/Levelup/MarginContainer/Lvl
-@onready var pointsLabel = $GameUi/PanelContainer/Levelup/MarginContainer/VBoxContainer/Points
+@onready var lvlLabel = $GameUi/PanelContainer/LvlLabels/VBoxContainer/Lvl
+@onready var pointsLabel = $GameUi/PanelContainer/LvlLabels/VBoxContainer/Points
 
 func _ready() -> void:
 	Console.pause_enabled = true
-	Console.add_command("dmg", dmg_player)
-	Console.add_command("heal", heal_player)
+	Console.add_command("dmg", dmg_player, 0, 0, "Hurt Player")
+	Console.add_command("heal", heal_player, 0, 0, "Heal Player")
+	Console.add_command("lvlUp", lvlUp, 1, 1, "Lvl up Player by amount")
 	
 	# This way fire rate is dynamic
 	if RevolverEnabled:
@@ -63,6 +64,7 @@ func _ready() -> void:
 	#lvl up
 	lvlBar.max_value = lvlUpThres
 	changeLvl(level)
+	changePnt(points)
 
 func _physics_process(_delta: float) -> void:
 	# Open Upgrade Tree
@@ -101,6 +103,15 @@ func dmg_player():
 # +1 hp
 func heal_player():
 	hp.current += 1
+func lvlUp(x: String):
+	var lvl = int(x)
+	if lvl == null:
+		Console.print_line("Please Enter a Int")
+	else:
+		level += lvl
+		points += lvl
+		changeLvl(level)
+		changePnt(points)
 #endregion
 
 func changeLvl(num):

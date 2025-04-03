@@ -30,9 +30,17 @@ default_font_size = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd0ac"]
 bg_color = Color(0, 0.517647, 0, 0.196078)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0u5uq"]
 bg_color = Color(0, 0.760784, 0, 0.196078)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="FontVariation" id="FontVariation_74mp2"]
 variation_embolden = 2.0
@@ -245,28 +253,37 @@ show_percentage = false
 
 [node name="Levelup" type="MarginContainer" parent="GameUi/PanelContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = -500
+theme_override_constants/margin_top = -275
+theme_override_constants/margin_right = -500
+theme_override_constants/margin_bottom = 885
 
 [node name="LevelupBar" type="ProgressBar" parent="GameUi/PanelContainer/Levelup"]
 layout_mode = 2
+size_flags_vertical = 1
 theme = SubResource("Theme_oikmp")
+theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameUi/PanelContainer/Levelup"]
+[node name="LvlLabels" type="MarginContainer" parent="GameUi/PanelContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 25
+theme_override_constants/margin_left = -490
+theme_override_constants/margin_top = -235
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/PanelContainer/Levelup/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/PanelContainer/LvlLabels"]
 layout_mode = 2
 
-[node name="Points" type="Label" parent="GameUi/PanelContainer/Levelup/MarginContainer/VBoxContainer"]
+[node name="Points" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"GraphNodeTitleLabel"
+theme_override_font_sizes/font_size = 30
 text = "Points:"
 
-[node name="Lvl" type="Label" parent="GameUi/PanelContainer/Levelup/MarginContainer/VBoxContainer"]
+[node name="Lvl" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"GraphNodeTitleLabel"
+theme_override_font_sizes/font_size = 30
 text = "Lvl:"
 
 [node name="RevolverCooldown" type="Timer" parent="."]
