@@ -7,13 +7,13 @@
 [ext_resource type="Script" uid="uid://ctuf38y050aep" path="res://addons/health_hitbox_hurtbox/2d/hurt_box_2d/hurt_box_2d.gd" id="3_mtuoh"]
 [ext_resource type="Texture2D" uid="uid://bgd1fiixjcvbe" path="res://Assets/Art/DeadAni.png" id="3_oikmp"]
 [ext_resource type="Script" uid="uid://cgtuofjkjxsch" path="res://Scenes/Player/aim.gd" id="5_dd0ac"]
-[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/revolver.gd" id="6_0u5uq"]
+[ext_resource type="Script" uid="uid://ny0ubxq0pxkd" path="res://Scenes/Player/Guns/revolver.gd" id="6_0u5uq"]
 [ext_resource type="Script" uid="uid://dfypjr53rhx5k" path="res://Scenes/Player/game_ui.gd" id="7_0u5uq"]
-[ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/shotgun.gd" id="7_jlvik"]
-[ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/tommy_gun.gd" id="8_gk6dx"]
+[ext_resource type="Script" uid="uid://wa1njh5k1h0p" path="res://Scenes/Player/Guns/shotgun.gd" id="7_jlvik"]
+[ext_resource type="Script" uid="uid://bedvoudwky1c8" path="res://Scenes/Player/Guns/tommy_gun.gd" id="8_gk6dx"]
 [ext_resource type="Script" uid="uid://dm3sd5orqfrf8" path="res://Scenes/Player/pause_menu_controller.gd" id="10_jhyir"]
 [ext_resource type="PackedScene" uid="uid://boenulv52o4of" path="res://Scenes/Menus/scenes/overlaid_menus/pause_menu.tscn" id="11_74mp2"]
-[ext_resource type="VideoStream" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
+[ext_resource type="VideoStream" uid="uid://do0pyjamc4dc8" path="res://Assets/Art/giphy.ogv" id="13_06tpx"]
 [ext_resource type="PackedScene" uid="uid://c1p6kvshdq8o6" path="res://Scenes/Player/upgrade_tree.tscn" id="13_7g0yx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_06tpx"]
@@ -397,8 +397,9 @@ pause_menu_packed = ExtResource("11_74mp2")
 [node name="UpgradeTree" parent="GameUi" instance=ExtResource("13_7g0yx")]
 visible = false
 layout_mode = 1
+scale = Vector2(2, 2)
 
-[node name="PanelContainer" type="PanelContainer" parent="GameUi"]
+[node name="PlayerUi" type="PanelContainer" parent="GameUi"]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -409,13 +410,13 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_dd0ac")
 
-[node name="Health" type="MarginContainer" parent="GameUi/PanelContainer"]
+[node name="Health" type="MarginContainer" parent="GameUi/PlayerUi"]
 layout_mode = 2
 theme_override_constants/margin_left = 250
 theme_override_constants/margin_top = -166
 theme_override_constants/margin_right = 250
 
-[node name="Label" type="Label" parent="GameUi/PanelContainer/Health"]
+[node name="Label" type="Label" parent="GameUi/PlayerUi/Health"]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(1.29953e-06, 0.759174, 3.46541e-06, 1)
@@ -423,14 +424,14 @@ theme_override_font_sizes/font_size = 20
 text = "100%"
 horizontal_alignment = 1
 
-[node name="Health2" type="MarginContainer" parent="GameUi/PanelContainer"]
+[node name="Health2" type="MarginContainer" parent="GameUi/PlayerUi"]
 layout_mode = 2
 theme_override_constants/margin_left = 525
 theme_override_constants/margin_top = 251
 theme_override_constants/margin_right = 525
 theme_override_constants/margin_bottom = 391
 
-[node name="ProgressBar" type="ProgressBar" parent="GameUi/PanelContainer/Health2"]
+[node name="ProgressBar" type="ProgressBar" parent="GameUi/PlayerUi/Health2"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
@@ -438,14 +439,14 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 value = 72.28
 show_percentage = false
 
-[node name="Levelup" type="MarginContainer" parent="GameUi/PanelContainer"]
+[node name="Levelup" type="MarginContainer" parent="GameUi/PlayerUi"]
 layout_mode = 2
 theme_override_constants/margin_left = -500
 theme_override_constants/margin_top = -275
 theme_override_constants/margin_right = -500
 theme_override_constants/margin_bottom = 885
 
-[node name="LevelupBar" type="ProgressBar" parent="GameUi/PanelContainer/Levelup"]
+[node name="LevelupBar" type="ProgressBar" parent="GameUi/PlayerUi/Levelup"]
 layout_mode = 2
 size_flags_vertical = 1
 theme = SubResource("Theme_oikmp")
@@ -453,21 +454,21 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/background = SubResource("StyleBoxFlat_dd0ac")
 theme_override_styles/fill = SubResource("StyleBoxFlat_0u5uq")
 
-[node name="LvlLabels" type="MarginContainer" parent="GameUi/PanelContainer"]
+[node name="LvlLabels" type="MarginContainer" parent="GameUi/PlayerUi"]
 layout_mode = 2
 theme_override_constants/margin_left = -490
 theme_override_constants/margin_top = -235
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/PanelContainer/LvlLabels"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameUi/PlayerUi/LvlLabels"]
 layout_mode = 2
 
-[node name="Points" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
+[node name="Points" type="Label" parent="GameUi/PlayerUi/LvlLabels/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"GraphNodeTitleLabel"
 theme_override_font_sizes/font_size = 30
 text = "Points:"
 
-[node name="Lvl" type="Label" parent="GameUi/PanelContainer/LvlLabels/VBoxContainer"]
+[node name="Lvl" type="Label" parent="GameUi/PlayerUi/LvlLabels/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"GraphNodeTitleLabel"
 theme_override_font_sizes/font_size = 30

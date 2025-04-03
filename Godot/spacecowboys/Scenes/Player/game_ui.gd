@@ -12,7 +12,7 @@ func _process(_delta: float) -> void:
 	var hpC = health.current
 	var hpMax = health.max
 	var hpValue: float = ((hpC * 1.0) / (hpMax * 1.0)) * 100
-	$PanelContainer/Health/Label.text = str(int(hpValue)) + "%"
-	$PanelContainer/Health2/ProgressBar.value = hpValue
+	$PlayerUi/Health/Label.text = str(int(hpValue)) + "%"
+	$PlayerUi/Health2/ProgressBar.value = hpValue
 	
 	pass

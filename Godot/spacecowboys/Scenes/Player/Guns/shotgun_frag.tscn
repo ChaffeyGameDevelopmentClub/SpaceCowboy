@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://4v367nd6ok2m"]
+[gd_scene load_steps=7 format=3 uid="uid://4v367nd6ok2m"]
 
-[ext_resource type="Script" uid="uid://d0rvp3vxgxtg3" path="res://Scenes/Player/shotgun_frag.gd" id="1_8bqdh"]
+[ext_resource type="Script" uid="uid://d0rvp3vxgxtg3" path="res://Scenes/Player/Guns/shotgun_frag.gd" id="1_8bqdh"]
+[ext_resource type="Texture2D" uid="uid://dmibp6vm6lcoa" path="res://Assets/Art/Shotgun Pellet.png" id="2_fgxdy"]
 [ext_resource type="Script" uid="uid://b1vnxk5bfh6el" path="res://addons/health_hitbox_hurtbox/2d/hit_box_2d/hit_box_2d.gd" id="2_hgw3w"]
 [ext_resource type="Script" uid="uid://hrwhd52e5mkq" path="res://addons/health_hitbox_hurtbox/resources/action.gd" id="3_cpt7w"]
 
@@ -17,13 +18,13 @@ size = Vector2(7, 7)
 [node name="ShotgunFrag" type="Node2D" node_paths=PackedStringArray("hit_box", "Sprite", "ExpireTimer")]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_8bqdh")
+SpriteTexture = "res://Assets/Art/icon.svg"
 hit_box = NodePath("HitBox2D")
 Sprite = NodePath("Sprite2D")
-SpriteTexture = "res://Assets/Art/icon.svg"
 ExpireTimer = NodePath("ExpireTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_fgxdy")
 
 [node name="HitBox2D" type="Area2D" parent="."]
 collision_layer = 2

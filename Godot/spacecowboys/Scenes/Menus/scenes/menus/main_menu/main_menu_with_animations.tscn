@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://dwo04y7s12mr4" path="res://Scenes/Menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_w0i4b"]
 [ext_resource type="PackedScene" uid="uid://bk4f734ktawnv" path="res://Scenes/Menus/scenes/credits/credits.tscn" id="4_yss76"]
 [ext_resource type="AudioStream" uid="uid://cefob4uchwbp1" path="res://Assets/music/Holstered Astronaut (Menu).wav" id="5_38vhq"]
-[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="5_w5kk6"]
+[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Level/bg.tres" id="5_w5kk6"]
 [ext_resource type="Texture2D" uid="uid://drkoeml0ork88" path="res://Assets/Art/asteroid.png" id="6_yss76"]
-[ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="7_38vhq"]
+[ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Bg/Planet.png" id="7_38vhq"]
 [ext_resource type="FontFile" uid="uid://rqas0pubkj0d" path="res://Assets/Art/Rexlia Rg.otf" id="9_73sup"]
 
 [sub_resource type="Animation" id="1"]

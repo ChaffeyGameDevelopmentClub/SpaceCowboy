@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cxqalvcdde8oe"]
+[gd_scene load_steps=7 format=3 uid="uid://cxqalvcdde8oe"]
 
-[ext_resource type="Script" uid="uid://s20aookoi877" path="res://Scenes/Player/basic_projectile.gd" id="1_4kpn1"]
+[ext_resource type="Script" uid="uid://s20aookoi877" path="res://Scenes/Player/Guns/basic_projectile.gd" id="1_4kpn1"]
 [ext_resource type="Script" uid="uid://b1vnxk5bfh6el" path="res://addons/health_hitbox_hurtbox/2d/hit_box_2d/hit_box_2d.gd" id="1_eq66d"]
+[ext_resource type="Texture2D" uid="uid://dmibp6vm6lcoa" path="res://Assets/Art/Shotgun Pellet.png" id="2_mq6iy"]
 [ext_resource type="Script" uid="uid://hrwhd52e5mkq" path="res://addons/health_hitbox_hurtbox/resources/action.gd" id="4_k1fpk"]
 
 [sub_resource type="Resource" id="Resource_4kpn1"]
@@ -22,7 +23,7 @@ SpriteTexture = "res://Assets/Art/icon.svg"
 ExpireTimer = NodePath("ExpireTimer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_mq6iy")
 
 [node name="HitBox2D" type="Area2D" parent="."]
 collision_layer = 2

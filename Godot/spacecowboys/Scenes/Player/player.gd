@@ -43,9 +43,9 @@ var lvlUpThres := 100.0
 var points := 0
 
 @onready var hp = $"Hp Player/Health"
-@onready var lvlBar = $GameUi/PanelContainer/Levelup/LevelupBar
-@onready var lvlLabel = $GameUi/PanelContainer/LvlLabels/VBoxContainer/Lvl
-@onready var pointsLabel = $GameUi/PanelContainer/LvlLabels/VBoxContainer/Points
+@onready var lvlBar = $GameUi/PlayerUi/Levelup/LevelupBar
+@onready var lvlLabel = $GameUi/PlayerUi/LvlLabels/VBoxContainer/Lvl
+@onready var pointsLabel = $GameUi/PlayerUi/LvlLabels/VBoxContainer/Points
 
 func _ready() -> void:
 	Console.pause_enabled = true
