@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=2 format=3 uid="uid://b0jsit3rj8las"]
+
+[ext_resource type="Script" uid="uid://co6p8a0l64i1m" path="res://addons/worldmap_builder/example/skill_stats.gd" id="1_fa5wh"]
+
+[resource]
+script = ExtResource("1_fa5wh")
+name = &""
+amount = 0.0
+metadata/_custom_type_script = "uid://co6p8a0l64i1m"
