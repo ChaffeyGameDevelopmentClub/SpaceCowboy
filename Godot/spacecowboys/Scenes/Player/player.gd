@@ -39,7 +39,7 @@ extends CharacterBody2D
 #endregion
 
 var level := 1
-var lvlUpThres := 100
+var lvlUpThres := 100.0
 var points := 0
 
 @onready var hp = $"Hp Player/Health"
@@ -78,7 +78,6 @@ func _physics_process(_delta: float) -> void:
 		Global.xp = 0
 	
 	
-	
 	#region Run directional Inputs
 	var direction := Input.get_vector("Move Left", "Move Right", "Move Up", "Move Down")
 	if direction:
@@ -106,7 +105,7 @@ func lvlUp(x: String):
 		points += lvl
 		changeLvl(level)
 		changePnt(points)
-func fireRate(gun: String,x: String):
+func fireRate(gun: String, x: String):
 	var rate = float(x)
 	if gun == "Revolver":
 		RevolverFireRate = rate
@@ -133,7 +132,7 @@ func changePnt(num):
 
 #region Signals
 # Player Died
-func _on_health_died(entity: Node) -> void:
+func _on_health_died(_entity: Node) -> void:
 	# Run death Screen
 	$AnimatedSprite2D.play('default')
 	$GameUi/DeadScreen/DeadBomb.start()

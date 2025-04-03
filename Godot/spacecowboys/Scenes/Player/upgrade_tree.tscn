@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=3 uid="uid://c1p6kvshdq8o6"]
 
-[ext_resource type="Script" uid="uid://wp3ququbm7vi" path="res://Scenes/Player/upgrade_tree.gd" id="1_b0q24"]
+[ext_resource type="Script" path="res://Scenes/Player/upgrade_tree.gd" id="1_b0q24"]
 [ext_resource type="Script" uid="uid://dimiqohun63w1" path="res://addons/worldmap_builder/nodes/worldmap_view.gd" id="1_np6n0"]
 [ext_resource type="Texture2D" uid="uid://dfwrk73ka6j8x" path="res://addons/worldmap_builder/example/skilltree_borders.png" id="2_b0q24"]
 [ext_resource type="Script" uid="uid://bpxchefawwliy" path="res://addons/worldmap_builder/resource_types/wordmap_style.gd" id="3_p4f7p"]
