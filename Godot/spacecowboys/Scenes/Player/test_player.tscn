@@ -1,37 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=5 format=3 uid="uid://due5phr1c3qd6"]
 
+[ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="1_jgfpa"]
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
-[ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="2_oc6vg"]
 [ext_resource type="PackedScene" uid="uid://bq3iu5swusugf" path="res://Scenes/Enemies/enemy_manager.tscn" id="3_jgfpa"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
-atlas = ExtResource("2_oc6vg")
-region = Rect2(0, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_aom2n"]
-atlas = ExtResource("2_oc6vg")
-region = Rect2(192, 0, 192, 108)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rty5c"]
-atlas = ExtResource("2_oc6vg")
-region = Rect2(384, 0, 192, 108)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_7g7fb"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jgfpa")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_aom2n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rty5c")
-}],
-"loop": false,
-"name": &"default",
-"speed": 0.0
-}]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jgfpa"]
 vertices = PackedVector2Array(1226.24, 615, -1152.87, 615, -1135.12, -762.063, 1260.74, -778.922)
@@ -48,7 +19,7 @@ repeat_size = Vector2(192, 108)
 repeat_times = 8
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
-sprite_frames = SubResource("SpriteFrames_7g7fb")
+sprite_frames = ExtResource("1_jgfpa")
 
 [node name="ParallaxLayer2" type="Parallax2D" parent="ParallaxBackground"]
 scroll_scale = Vector2(0.3, 0.3)
@@ -56,7 +27,7 @@ repeat_size = Vector2(192, 108)
 repeat_times = 8
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-sprite_frames = SubResource("SpriteFrames_7g7fb")
+sprite_frames = ExtResource("1_jgfpa")
 frame = 1
 
 [node name="ParallaxLayer3" type="Parallax2D" parent="ParallaxBackground"]
@@ -65,7 +36,7 @@ repeat_size = Vector2(192, 108)
 repeat_times = 8
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer3"]
-sprite_frames = SubResource("SpriteFrames_7g7fb")
+sprite_frames = ExtResource("1_jgfpa")
 frame = 2
 frame_progress = 0.210233
 

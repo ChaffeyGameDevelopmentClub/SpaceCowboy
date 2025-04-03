@@ -1,0 +1,32 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://tdlft07b5jsx"]
+
+[ext_resource type="Texture2D" uid="uid://b3iwghc1uj8q1" path="res://Assets/Art/Background-Sheet.png" id="1_8el13"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgfpa"]
+atlas = ExtResource("1_8el13")
+region = Rect2(0, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aom2n"]
+atlas = ExtResource("1_8el13")
+region = Rect2(192, 0, 192, 108)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rty5c"]
+atlas = ExtResource("1_8el13")
+region = Rect2(384, 0, 192, 108)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgfpa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aom2n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rty5c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}]
