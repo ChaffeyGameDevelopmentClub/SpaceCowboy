@@ -8,7 +8,7 @@ const ENEMY1 = preload("res://Scenes/Enemies/enemy_1.tscn")
 @export var protectionRadius = 150 ## The radius from the player they can't spawn in
 
 ## Amount of Enemies to be spawned
-var amount
+var spawnAmount
 var rand
 
 @onready var player = get_parent().get_node("Player")
@@ -21,9 +21,9 @@ func _ready() -> void:
 	rand = RandomNumberGenerator.new()
 	rand.randomize()
 	
-	amount = 5
+	spawnAmount = 5
 
-	spawn_group(amount)
+	spawn_group(spawnAmount)
 	%SpawnTimer.start()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,10 +62,10 @@ func killAll():
 		child.queue_free()
 	
 func _on_spawn_timer_timeout() -> void:
-	spawn_group(amount)
-	if amount < 30:
-		amount += 5
-	elif amount < 100:
-		amount += 15
+	spawn_group(spawnAmount)
+	if spawnAmount < 30:
+		spawnAmount += 5
+	elif spawnAmount < 100:
+		spawnAmount += 15
 	else:
-		amount += 30
+		spawnAmount += 30
