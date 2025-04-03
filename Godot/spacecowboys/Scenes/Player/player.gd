@@ -39,7 +39,7 @@ extends CharacterBody2D
 #endregion
 
 var level := 1
-var lvlUpThres := 100
+var lvlUpThres := 100.0
 var points := 0
 
 @onready var hp = $"Hp Player/Health"
@@ -132,7 +132,7 @@ func changePnt(num):
 
 #region Signals
 # Player Died
-func _on_health_died(entity: Node) -> void:
+func _on_health_died(_entity: Node) -> void:
 	# Run death Screen
 	$AnimatedSprite2D.play('default')
 	$GameUi/DeadScreen/DeadBomb.start()
