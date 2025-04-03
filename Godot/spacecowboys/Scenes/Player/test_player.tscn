@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://due5phr1c3qd6"]
+[gd_scene load_steps=8 format=3 uid="uid://due5phr1c3qd6"]
 
+[ext_resource type="AudioStream" uid="uid://cl7e3w6a4ao1j" path="res://Assets/music/Large FE (Combat).wav" id="1_7g7fb"]
 [ext_resource type="SpriteFrames" uid="uid://tdlft07b5jsx" path="res://Scenes/Player/bg.tres" id="1_jgfpa"]
 [ext_resource type="PackedScene" uid="uid://bni2qubpevn68" path="res://Scenes/Player/player.tscn" id="1_ruc20"]
 [ext_resource type="Texture2D" uid="uid://dqdmlkx2ljx71" path="res://Assets/Art/Planet.png" id="2_aom2n"]
@@ -12,6 +13,11 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-1145, -772, 1271, -789, 1236, 625, -1163, 625)])
 
 [node name="TestPlayer" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7g7fb")
+volume_db = -15.0
+autoplay = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 position = Vector2(576, 324)
