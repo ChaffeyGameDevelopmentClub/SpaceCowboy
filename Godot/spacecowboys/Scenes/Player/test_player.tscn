@@ -51,7 +51,7 @@ repeat_times = 4
 texture = ExtResource("2_aom2n")
 
 [node name="ParallaxLayer5" type="Parallax2D" parent="ParallaxBackground"]
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.08, 0.08)
 scroll_offset = Vector2(216.215, 247.875)
 repeat_size = Vector2(500, 500)
 repeat_times = 4
@@ -60,7 +60,7 @@ repeat_times = 4
 texture = ExtResource("3_rty5c")
 
 [node name="ParallaxLayer6" type="Parallax2D" parent="ParallaxBackground"]
-scroll_scale = Vector2(0.1, 0.1)
+scroll_scale = Vector2(0.08, 0.08)
 scroll_offset = Vector2(216.215, 247.875)
 repeat_size = Vector2(500, 500)
 repeat_times = 4
