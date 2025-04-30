@@ -25,7 +25,6 @@ func _ready() -> void:
 	skilltree.max_unlock_cost = starting_skillpoints
 	_skillpoints_changed() # Called on ready
 	tooltip_root.hide()
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,13 +61,15 @@ func _skillpoints_changed():
 	stat_list.text = "\n".join(stat_list_text)
 
 # For mouse Input? 
-func _on_map_node_gui_input(event : InputEvent, path : NodePath, node_in_path : int, resource : WorldmapNodeData):
+func _on_worldmap_view_node_gui_input(event: InputEvent, path: NodePath, node_in_path: int, resource: WorldmapNodeData) -> void:
 	if event is InputEventMouseMotion: # Move tooltip to mouse pos
 		tooltip_root.global_position = event.global_position
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
+			print_debug("Mouse Clicked")
 			# If can get skill point? Lowers .max_unlock_cost
+			print_debug(skilltree.get_node_state(path, node_in_path))
 			if skilltree.get_node_state(path, node_in_path) <= 0:
 				if skilltree.can_activate(path, node_in_path):
 					tooltip_root.hide()
@@ -84,13 +85,14 @@ func _on_map_node_gui_input(event : InputEvent, path : NodePath, node_in_path : 
 			#skilltree.get_node(path).remove_node(node_in_path)
 
 # Mouse Moves on tool tip? Displays Name and Desc
-func _on_map_node_mouse_entered(_path : NodePath, _node_in_path : int, resource : WorldmapNodeData):
+func _on_worldmap_view_node_mouse_entered(path: NodePath, node_in_path: int, resource: WorldmapNodeData) -> void:
 	tooltip_root.show()
 	tooltip_title.text = resource.name
 	tooltip_desc.text = resource.desc
 	tooltip_root.size = Vector2.ZERO
+
 # Mouse moves away from tooltip? Hides Tooltip
-func _on_map_node_mouse_exited(_path : NodePath, _node_in_path : int, _resource : WorldmapNodeData):
+func _on_worldmap_view_node_mouse_exited(path: NodePath, node_in_path: int, resource: WorldmapNodeData) -> void:
 	tooltip_root.hide()
 
 # Reset Skills

@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 @export var starting_skillpoints := 12
 @export var skilltree : WorldmapView
