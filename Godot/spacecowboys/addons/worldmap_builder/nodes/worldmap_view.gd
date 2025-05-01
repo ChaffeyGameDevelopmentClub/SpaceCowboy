@@ -508,7 +508,6 @@ func get_all_nodes() -> Dictionary:
 	var state_keys := _worldmap_state.keys()
 	var state_values := _worldmap_state.values()
 	for i in state_keys.size():
-		print_debug("test")
 		var cur_view_item : NodePath = state_keys[i]
 		var cur_view_values : Array = state_values[i]
 		for j in cur_view_values.size():
@@ -563,6 +562,7 @@ func view_item_node_removed(node : WorldmapViewItem, index : int):
 
 
 func _update_activatable():
+	print_debug(_updating_activatable)
 	if _updating_activatable: return
 	_updating_activatable = true
 	await get_tree().process_frame
@@ -572,7 +572,9 @@ func _update_activatable():
 		_update_activatable_local(k)
 
 	for x in _connections_all:
+		print_debug(x)
 		_update_activatable_interitem(x)
+		
 
 	_updating_activatable = false
 	queue_redraw()
@@ -613,6 +615,7 @@ func _update_activatable_interitem(connection : ConnectionPoint):
 	var neighbors := get_connections_of_point(filled_index, filled_item_path, 1, false, true)
 	var activatable := false
 	for x in neighbors.costs:
+		print_debug(x)
 		if max_unlock_cost >= x:
 			activatable = true
 			break

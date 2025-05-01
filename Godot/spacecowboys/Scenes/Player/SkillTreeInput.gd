@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 	
 # From example - Edited Slightly
 func _skillpoints_changed():
-	print("Skillpoints Changed")
+	#print("Skillpoints Changed")
 	# Formatting Point Label
 	skillpoint_label.text = skillpoint_label_format.format([skilltree.max_unlock_cost])
 	# Skill Reset button - Disables if you earned points
@@ -41,7 +41,7 @@ func _skillpoints_changed():
 	# Display Stat Increases
 	var stat_list_text : Array[String] = []
 	var stats_raw := skilltree.get_all_nodes()
-	print(stats_raw)
+	#print(stats_raw)
 	var stats := {} # Need to pass this to player?
 	for k in stats_raw:
 		var v : int = stats_raw[k]
@@ -59,6 +59,45 @@ func _skillpoints_changed():
 		stat_list_text.append("%s: %s" % [k, stats[k]])
 	# Write Stats to Label
 	stat_list.text = "\n".join(stat_list_text)
+	
+	# Disable other paths
+	# Shotgun
+	if skilltree.get_node_state("WorldmapGraph", 4) > 0: # Fire
+		disableNode(8)
+	elif skilltree.get_node_state("WorldmapGraph", 8) > 0: # Frag
+		disableNode(4)
+	# Revolver
+	if skilltree.get_node_state("WorldmapGraph", 10) > 0: # Dead Eye
+		disableNode(11)
+	elif skilltree.get_node_state("WorldmapGraph", 11) > 0: # Pierce
+		disableNode(10)
+	# Tommy
+	if skilltree.get_node_state("WorldmapGraph", 5) > 0: # Gamblers Choice
+		disableNode(9)
+	elif skilltree.get_node_state("WorldmapGraph", 9) > 0: # Burst
+		disableNode(5)
+	
+func disableNode(node):
+	var graph = skilltree.get_node("WorldmapGraph")
+	var ne = graph.get_node_neighbors(node)
+	#for neighbors in ne:
+		#graph.set_connected(neighbors,node,false)
+	skilltree.get_node_data("WorldmapGraph", node).cost = 500
+	skilltree.get_node_data("WorldmapGraph", node).name = "Disabled"
+	var array = skilltree._worldmap_can_activate.get(^"WorldmapGraph")
+	skilltree._worldmap_can_activate.get(^"WorldmapGraph")[node] = false
+	print_debug("Update_activatable")
+	#print_debug(skilltree._updating_activatable)
+	skilltree._update_activatable()
+	#print_debug(skilltree._updating_activatable)
+	#skilltree._update_activatable_local("WorldmapGraph")
+	#skilltree."Members/_worldmap_can_activate"["WorldmapGraph"]
+	
+	#print("skill treee:" + str(skilltree))
+	#print("Members: " + str(skilltree._worldmap_can_activate))
+	#var test = skilltree._worldmap_can_activate["WorldmapGraph"]
+	#print("Graph Array: " + str(test))
+	#print("Graph Array: " + str(test[4]))
 
 # For mouse Input? 
 func _on_worldmap_view_node_gui_input(event: InputEvent, path: NodePath, node_in_path: int, resource: WorldmapNodeData) -> void:
@@ -67,9 +106,9 @@ func _on_worldmap_view_node_gui_input(event: InputEvent, path: NodePath, node_in
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT && event.pressed:
-			print_debug("Mouse Clicked")
+			#print_debug("Mouse Clicked")
 			# If can get skill point? Lowers .max_unlock_cost
-			print_debug(skilltree.get_node_state(path, node_in_path))
+			#print_debug(skilltree.get_node_state(path, node_in_path))
 			if skilltree.get_node_state(path, node_in_path) <= 0:
 				if skilltree.can_activate(path, node_in_path):
 					tooltip_root.hide()
