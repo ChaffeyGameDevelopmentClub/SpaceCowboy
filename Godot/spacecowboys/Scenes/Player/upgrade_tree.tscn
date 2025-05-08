@@ -91,6 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("16_wv0xe")
+starting_skillpoints = 0
 skilltree = NodePath("../MapCont/MarginContainer2/WorldmapView")
 skillpoint_label = NodePath("Anchors/BottomBox/Panel/Points")
 skill_reset = NodePath("Anchors/BottomBox/ResetSkills")

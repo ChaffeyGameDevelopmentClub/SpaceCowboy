@@ -14,7 +14,13 @@ extends Control
 @export var tooltip_title : Label
 @export var tooltip_desc : Label
 
-var points
+var points = true
+var fire = true
+var frag = true
+var deadEye = true
+var pierce = true
+var gamblersChoice = true
+var burst = true
 
 @onready var player = get_parent().get_parent()
 
@@ -62,42 +68,50 @@ func _skillpoints_changed():
 	
 	# Disable other paths
 	# Shotgun
-	if skilltree.get_node_state("WorldmapGraph", 4) > 0: # Fire
+	if skilltree.get_node_state("WorldmapGraph", 4) > 0 and fire: # Fire
 		disableNode(8)
-	elif skilltree.get_node_state("WorldmapGraph", 8) > 0: # Frag
+		fire = false
+	elif skilltree.get_node_state("WorldmapGraph", 8) > 0 and frag: # Frag
 		disableNode(4)
+		frag = false
 	# Revolver
-	if skilltree.get_node_state("WorldmapGraph", 10) > 0: # Dead Eye
+	if skilltree.get_node_state("WorldmapGraph", 10) > 0 and deadEye: # Dead Eye
 		disableNode(11)
-	elif skilltree.get_node_state("WorldmapGraph", 11) > 0: # Pierce
+		deadEye = false
+	elif skilltree.get_node_state("WorldmapGraph", 11) > 0 and pierce: # Pierce
 		disableNode(10)
+		pierce = false
 	# Tommy
-	if skilltree.get_node_state("WorldmapGraph", 5) > 0: # Gamblers Choice
+	if skilltree.get_node_state("WorldmapGraph", 5) > 0 and gamblersChoice: # Gamblers Choice
 		disableNode(9)
-	elif skilltree.get_node_state("WorldmapGraph", 9) > 0: # Burst
+		gamblersChoice = false
+	elif skilltree.get_node_state("WorldmapGraph", 9) > 0 and burst: # Burst
 		disableNode(5)
+		burst = false
 	
 func disableNode(node):
-	var graph = skilltree.get_node("WorldmapGraph")
-	var ne = graph.get_node_neighbors(node)
-	#for neighbors in ne:
-		#graph.set_connected(neighbors,node,false)
-	skilltree.get_node_data("WorldmapGraph", node).cost = 500
-	skilltree.get_node_data("WorldmapGraph", node).name = "Disabled"
-	var array = skilltree._worldmap_can_activate.get(^"WorldmapGraph")
-	skilltree._worldmap_can_activate.get(^"WorldmapGraph")[node] = false
-	print_debug("Update_activatable")
-	#print_debug(skilltree._updating_activatable)
-	skilltree._update_activatable()
-	#print_debug(skilltree._updating_activatable)
-	#skilltree._update_activatable_local("WorldmapGraph")
-	#skilltree."Members/_worldmap_can_activate"["WorldmapGraph"]
+	skilltree.get_node("WorldmapGraph").remove_node(node)
 	
-	#print("skill treee:" + str(skilltree))
-	#print("Members: " + str(skilltree._worldmap_can_activate))
-	#var test = skilltree._worldmap_can_activate["WorldmapGraph"]
-	#print("Graph Array: " + str(test))
-	#print("Graph Array: " + str(test[4]))
+	
+	##var ne = graph.get_node_neighbors(node)
+	##for neighbors in ne:
+		##graph.set_connected(neighbors,node,false)
+	#skilltree.get_node_data("WorldmapGraph", node).cost = 500
+	#skilltree.get_node_data("WorldmapGraph", node).name = "Disabled"
+	#var array = skilltree._worldmap_can_activate.get(^"WorldmapGraph")
+	#skilltree._worldmap_can_activate.get(^"WorldmapGraph")[node] = false
+	#print_debug("Update_activatable")
+	##print_debug(skilltree._updating_activatable)
+	#skilltree._update_activatable()
+	##print_debug(skilltree._updating_activatable)
+	##skilltree._update_activatable_local("WorldmapGraph")
+	##skilltree."Members/_worldmap_can_activate"["WorldmapGraph"]
+	#
+	##print("skill treee:" + str(skilltree))
+	##print("Members: " + str(skilltree._worldmap_can_activate))
+	##var test = skilltree._worldmap_can_activate["WorldmapGraph"]
+	##print("Graph Array: " + str(test))
+	##print("Graph Array: " + str(test[4]))
 
 # For mouse Input? 
 func _on_worldmap_view_node_gui_input(event: InputEvent, path: NodePath, node_in_path: int, resource: WorldmapNodeData) -> void:
